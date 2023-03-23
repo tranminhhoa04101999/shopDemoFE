@@ -1,0 +1,29 @@
+.itemInCart {
+  height: 160px;
+}
+
+.itemInCart input {
+  width: 50px;
+}
+
+.img_itemCart {
+  max-height: 100px;
+  border-radius: 20px;
+}
+.container-cart {
+  min-width: 80vw;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.cart_right {
+  background-color: #eae8e8;
+}
+.total {
+}
+.total_title {
+  font-size: 1.4rem;
+}
+.btn_order {
+  max-width: 200px;
+  margin: 200px auto 0;
+}
