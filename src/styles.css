@@ -2,7 +2,8 @@
 @import-normalize;
 * {
   box-sizing: border-box;
-  line-height: 1.6rem;
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+}
+:root {
+  --header-mt: 80px;
 }

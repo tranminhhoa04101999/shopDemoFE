@@ -1,5 +1,5 @@
 <div
-  class="form d-flex vh-100 justify-content-center align-items-center form-login"
+  class="form d-flex vh-100 justify-content-center align-items-center form-login wrapper-login"
 >
   <div
     class="container d-flex h-75 justify-content-center align-items-center shadow-lg p-3 mb-5 bg-white container-login"
@@ -17,13 +17,12 @@
           <div class="col-8">
             <div class="form-group">
               <label for="usr">Username:</label>
-              <input type="text" class="form-control" [(ngModel)]="username" />
-              <p
-                class="text-danger ml-2"
-                *ngIf="username == ''; else usernameHopLe"
-              >
-                Chưa nhập username
-              </p>
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="customer.username"
+              />
+              <p class="text-danger ml-2">Chưa nhập username</p>
               <ng-template #usernameHopLe
                 ><p class="text-success ml-2">username hợp lệ</p></ng-template
               >
@@ -38,7 +37,7 @@
                 type="text"
                 name=""
                 class="form-control"
-                [(ngModel)]="password"
+                [(ngModel)]="customer.password"
               />
             </div>
           </div>

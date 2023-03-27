@@ -11,6 +11,7 @@
   border-radius: 20px;
 }
 .container-cart {
+  margin-top: var(--header-mt);
   min-width: 80vw;
   border-radius: 20px;
   overflow: hidden;
