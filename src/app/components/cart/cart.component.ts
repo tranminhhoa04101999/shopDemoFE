@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Data } from "@angular/router";
 import { CartDto } from "src/app/model/CartDto.model";
+import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CartService } from "src/app/service/Cart.service";
 
 @Component({
@@ -10,16 +12,20 @@ import { CartService } from "src/app/service/Cart.service";
 export class CartComponent implements OnInit {
   carts: CartDto;
   totalPrice: number = 2000;
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.cartService.FindByIdCustomer(2).subscribe((data) => {
-      this.carts = data;
-      this.totalPrice = this.carts.cartDetailDtos.reduce((prev, current) => {
+    this.route.data.subscribe((data: Data) => {
+      this.carts = data["carts"];
+      this.totalPrice = data.carts.cartDetailDtos.reduce((prev, current) => {
         return prev + current.itemDto.price * current.quantity;
       }, 0);
     });
   }
+  
   test() {}
   subQuantity(event: { id: number }) {
     const cartNew = this.carts.cartDetailDtos.map((temp) =>
@@ -43,13 +49,9 @@ export class CartComponent implements OnInit {
 
   onUpdateCart() {
     this.carts.cartDetailDtos.map((temp) => {
-      temp.cartDto = new CartDto(
-        this.carts.id,
-        this.carts.customerDto,
-        this.carts.cartDetailDtos
-      );
+      temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
 
-      this.cartService.updateCart(temp).subscribe((data) => console.log(data));
+      this.cartService.updateCart(temp).subscribe();
     });
   }
 }

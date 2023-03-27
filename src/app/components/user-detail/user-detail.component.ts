@@ -13,6 +13,14 @@ export class UserDetailComponent implements OnInit {
   constructor(private customerService: CustomerService) {}
 
   ngOnInit() {
-    this.customerService.findById(2).subscribe((data) => (this.user = data));
+    const customer: CustomerDto = JSON.parse(
+      localStorage.getItem("inforUsers")
+    );
+    console.log(customer);
+    if (customer !== null) {
+      this.customerService
+        .findById(customer.id)
+        .subscribe((data) => (this.user = data));
+    }
   }
 }

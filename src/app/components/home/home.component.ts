@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { ItemDto } from "src/app/model/ItemDto.model";
 import { CartService } from "src/app/service/Cart.service";
 import { ItemService } from "src/app/service/ItemService.service";
-import { authToken } from "../login/login.component";
 
 const formatter = new Intl.NumberFormat("en-US", {
   style: "currency",

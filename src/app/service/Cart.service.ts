@@ -1,14 +1,12 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { authToken } from "../components/login/login.component";
 import { CartDetailDto } from "../model/CartDetailDto.model";
 import { CartDto } from "../model/CartDto.model";
 
 const httpOptions = {
   headers: new HttpHeaders({
     "Content-Type": "Application/json",
-    Authorization: `Bearer ${authToken}`,
   }),
 };
 
@@ -38,9 +36,13 @@ export class CartService {
       .pipe();
   }
 
-  updateCart(cartDetail: CartDetailDto): Observable<any> {
+  updateCart(cartDetail: CartDetailDto): Observable<CartDetailDto> {
     return this.httpClient
-      .put("http://localhost:8080/api/carts", cartDetail, httpOptions)
+      .put<CartDetailDto>(
+        "http://localhost:8080/api/carts",
+        cartDetail,
+        httpOptions
+      )
       .pipe();
   }
 }
