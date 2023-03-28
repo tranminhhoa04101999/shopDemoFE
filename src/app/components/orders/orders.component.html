@@ -1,0 +1,44 @@
+<div class="container container-orders">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card" *ngFor="let item of orders">
+        <div class="card-body">
+          <h5 class="card-title">Ngày đặt: {{ item.orderdate }}</h5>
+          <p class="card-text">username: {{ item.customerDto.username }}</p>
+          <button
+            class="btn btn-primary"
+            (click)="showDetails({ idOrder: item.id })"
+          >
+            Chi tiết
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div *ngIf="orderDetail.length > 0">
+        <div *ngFor="let item2 of orderDetail">
+          <div class="row orderCart border-bottom d-flex align-items-center">
+            <div class="col-2">
+              <img
+                src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+                alt="dongho"
+                class="img_orderdetail"
+              />
+            </div>
+            <div class="col-4 font-weight-bold">
+              <span>{{ item2.itemDto.name }}</span>
+            </div>
+
+            <div class="col-4">
+              <span>{{ item2.itemDto.price | currency : "VND" }}</span>
+            </div>
+            <div class="col-2">x{{ item2.quantity }}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="totalOrderDetail !== 0">
+        Tổng tiền: {{ totalOrderDetail | currency : "VND" }}
+      </div>
+    </div>
+  </div>
+</div>

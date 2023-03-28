@@ -13,60 +13,81 @@
         />
       </div>
       <div class="col-7">
-        <div class="row d-flex justify-content-center">
-          <div class="col-8">
-            <div class="text-danger">
-              {{ error.statusCode === 10000 ? "Sai thông tin đăng nhập" : "" }}
-            </div>
+        <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+          <div class="row d-flex justify-content-center">
+            <div class="col-8">
+              <div class="text-danger">
+                {{
+                  error.statusCode === 10000 ? "Sai thông tin đăng nhập" : ""
+                }}
+              </div>
 
-            <div class="form-group">
-              <label for="usr">Username:</label>
-              <input
-                type="text"
-                class="form-control"
-                [(ngModel)]="customer.username"
-              />
-              <!-- <p class="text-danger ml-2">Chưa nhập username</p>
-              <ng-template #usernameHopLe
-                ><p class="text-success ml-2">username hợp lệ</p></ng-template
-              > -->
+              <div class="form-group">
+                <label for="usr">Tài khoản:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  required
+                  [(ngModel)]="customer.username"
+                  #username="ngModel"
+                />
+                <div
+                  [hidden]="username.valid || username.pristine"
+                  class="text-danger"
+                >
+                  tài khoản không được trống
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-8">
-            <div class="form-group">
-              <label for="pass">Password:</label>
+          <div class="row d-flex justify-content-center">
+            <div class="col-8">
+              <div class="form-group">
+                <label for="pass">Mật khẩu:</label>
+                <input
+                  type="password"
+                  name="password"
+                  class="form-control"
+                  [(ngModel)]="customer.password"
+                  required
+                  #password="ngModel"
+                />
+                <div
+                  [hidden]="password.valid || password.pristine"
+                  class="text-danger"
+                >
+                  mật khẩu không được trống
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="mb-2 col-8 float-left">
+              <a href="#">Quên mật khẩu?</a>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-8">
               <input
-                type="text"
-                name=""
-                class="form-control"
-                [(ngModel)]="customer.password"
+                class="btn btn-primary btn-block mb-4"
+                type="submit"
+                value="Đăng nhập"
+                [disabled]="!loginForm.form.valid"
               />
             </div>
           </div>
-        </div>
+        </form>
         <div class="row d-flex justify-content-center">
-          <div class="mb-2 col-8 float-left">
-            <a href="#">Forgot password?</a>
+          <div class="col-5 text-center">
+            <p>
+              Chưa có tài khoản?
+              <a [routerLink]="['/register']" routerLinkActive="active"
+                >Đăng ký</a
+              >
+            </p>
           </div>
         </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-8">
-            <input
-              class="btn btn-primary btn-block mb-4"
-              type="submit"
-              value="SIGN IN"
-              (click)="onLogin()"
-            />
-          </div>
-        </div>
-        <div class="row d-flex justify-content-center">
-          <div class="col-4 text-center">
-            <p>Not a member? <a href="#!">Register</a></p>
-          </div>
-        </div>
-        <!-- <button class="btn btn-primary" (click)="test()">test</button> -->
       </div>
     </div>
   </div>

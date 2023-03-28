@@ -6,6 +6,7 @@ import {
 } from "@angular/router";
 import { Observable } from "rxjs";
 import { CartDto } from "../model/CartDto.model";
+import { CustomerDto } from "../model/CustomerDto.model";
 import { CartService } from "../service/Cart.service";
 
 @Injectable()
@@ -15,6 +16,8 @@ export class CartResolver implements Resolve<CartDto> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): CartDto | Observable<CartDto> | Promise<CartDto> {
-    return this.cartService.FindByIdCustomer(2);
+    let customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
+
+    return this.cartService.FindByIdCustomer(customer.id);
   }
 }

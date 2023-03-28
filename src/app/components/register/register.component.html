@@ -1,0 +1,67 @@
+<div
+  class="form d-flex vh-100 justify-content-center align-items-center form-register wrapper-register"
+>
+  <div class="container h-75 shadow-lg bg-white container-register w-25">
+    <form (ngSubmit)="onRegister()" #registerForm="ngForm">
+      <div class="row mt-5">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="usr">Tài khoản:</label>
+            <input
+              type="text"
+              class="form-control"
+              name="username"
+              required
+              [(ngModel)]="customer.username"
+              #username="ngModel"
+            />
+            <div
+              [hidden]="username.valid || username.pristine"
+              class="text-danger"
+            >
+              vui lòng nhập tài khoản!
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="pass">Mật khẩu:</label>
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              [(ngModel)]="customer.password"
+              required
+              #password="ngModel"
+            />
+            <div
+              [hidden]="password.valid || password.pristine"
+              class="text-danger"
+            >
+              mật khẩu không được trống
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-8">
+          <input
+            class="btn btn-primary btn-block mb-4"
+            type="submit"
+            value="Đăng ký"
+            [disabled]="!registerForm.form.valid"
+          />
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-5 text-center">
+          <p>
+            <a href="#">Đăng nhập</a>
+          </p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

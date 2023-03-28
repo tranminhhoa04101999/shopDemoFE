@@ -6,11 +6,18 @@
         class="row pt-5 pb-3 px-3 d-flex justify-content-between align-items-center border-bottom"
       >
         <h2 class="font-weight-bold mb-0 text-black">Giỏ Hàng</h2>
-        <button class="btn btn-primary" (click)="onUpdateCart()">
+        <button
+          *ngIf="carts.cartDetailDtos.length > 0"
+          class="btn btn-primary"
+          (click)="onUpdateCart()"
+        >
           Cập nhật giỏ
         </button>
       </div>
       <!-- item incart -->
+      <div>
+        <h2>{{ errorMessage }}</h2>
+      </div>
       <div
         class="row itemInCart border-bottom d-flex align-items-center"
         *ngFor="let temp of carts.cartDetailDtos"
@@ -62,6 +69,7 @@
         type="button"
         class="btn btn-dark btn-block btn-lg btn_order"
         data-mdb-ripple-color="dark"
+        (click)="placeAnOrder()"
       >
         Thanh toán
       </button>

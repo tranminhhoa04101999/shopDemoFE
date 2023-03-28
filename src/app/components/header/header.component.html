@@ -17,7 +17,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/']" routerLinkActive="active"
-            >Home <span class="sr-only">(current)</span></a
+            >Trang Chủ <span class="sr-only">(current)</span></a
           >
         </li>
       </ul>
@@ -33,6 +33,13 @@
         </button>
       </form>
       <button
+        class="user mx-3 btn"
+        [routerLink]="['/orders']"
+        routerLinkActive="active"
+      >
+        <i class="bi bi-calendar2-event"></i>
+      </button>
+      <button
         class="cart mx-3 btn"
         [routerLink]="['/cart']"
         routerLinkActive="active"
@@ -47,13 +54,20 @@
       >
         <i class="bi bi-person-circle"></i>
       </button>
-      <button
-        class="cart mx-3 btn"
-        [routerLink]="['/login']"
-        routerLinkActive="active"
-      >
-        Login
-      </button>
+      <div *ngIf="logginIn !== null; else logout">
+        <button class="cart mx-3 btn btn-warning" (click)="onLogout()">
+          Logout
+        </button>
+      </div>
+      <ng-template #logout>
+        <button
+          class="cart mx-3 btn btn-success"
+          [routerLink]="['/login']"
+          routerLinkActive="active"
+        >
+          Login
+        </button>
+      </ng-template>
     </div>
   </nav>
 </div>

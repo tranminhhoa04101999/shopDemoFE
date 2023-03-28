@@ -1,0 +1,10 @@
+.container-orders {
+  margin-top: var(--header-mt);
+  max-width: 1200px;
+}
+.img_orderdetail {
+  width: 50px;
+}
+.orderCart {
+  height: 100px;
+}

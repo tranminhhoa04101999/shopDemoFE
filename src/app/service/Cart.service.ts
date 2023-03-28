@@ -19,6 +19,7 @@ export class CartService {
       .get<CartDto>(`http://localhost:8080/api/carts/${id}`, httpOptions)
       .pipe();
   }
+
   deleteCartDetail(id: number): Observable<any> {
     return this.httpClient.delete(
       `http://localhost:8080/api/carts/${id}`,
@@ -43,6 +44,11 @@ export class CartService {
         cartDetail,
         httpOptions
       )
+      .pipe();
+  }
+  placeAnOrder(cartDto: CartDto): Observable<any> {
+    return this.httpClient
+      .post<any>("http://localhost:8080/api/orders", cartDto, httpOptions)
       .pipe();
   }
 }

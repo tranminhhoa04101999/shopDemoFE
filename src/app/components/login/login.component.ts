@@ -10,7 +10,7 @@ import { CustomerService } from "src/app/service/customer.service";
 })
 export class LoginComponent implements OnInit {
   customer: CustomerDto = new CustomerDto(0, "", "", 1);
-  login = false;
+
   error: { statusCode: number; message: string } = {
     statusCode: 0,
     message: "",
@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
             // this.customer = data;
             localStorage.setItem("inforUsers", JSON.stringify(data));
           });
+        this.customerService.logginLogin();
       },
       (err) => {
         let temp = JSON.parse(err.error);
@@ -40,9 +41,5 @@ export class LoginComponent implements OnInit {
         // console.log(temp);
       }
     );
-  }
-
-  test() {
-    console.log(JSON.parse(localStorage.getItem("inforUsers")));
   }
 }
