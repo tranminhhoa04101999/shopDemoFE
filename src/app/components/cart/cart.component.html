@@ -1,7 +1,24 @@
-<div class="container container-cart">
+<div class="container container-cart" style="position: relative" #container>
+  <div
+    #alertChild
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+    style="position: absolute; top: 0; right: 0; z-index: 1"
+  >
+    <strong>Đặt hàng thành công!</strong
+    ><button
+      type="button"
+      class="close"
+      aria-label="Close"
+      (click)="onHideAlert()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <div class="row">
     <div class="col-lg-8">
       <!-- header cart -->
+
       <div
         class="row pt-5 pb-3 px-3 d-flex justify-content-between align-items-center border-bottom"
       >

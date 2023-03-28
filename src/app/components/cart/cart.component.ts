@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { ActivatedRoute, Data } from "@angular/router";
-import { CartDetailDto } from "src/app/model/CartDetailDto.model";
 import { CartDto } from "src/app/model/CartDto.model";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CartService } from "src/app/service/Cart.service";
@@ -11,6 +10,9 @@ import { CartService } from "src/app/service/Cart.service";
   styleUrls: ["./cart.component.css"],
 })
 export class CartComponent implements OnInit {
+  @ViewChild("alertChild", { static: true }) alertChild: ElementRef;
+  @ViewChild("container", { static: true }) containerChild: ElementRef;
+
   carts: CartDto = new CartDto(0, new CustomerDto(0, "", "", 1), []);
   totalPrice: number = 2000;
   emptyDetail = false;
@@ -68,9 +70,11 @@ export class CartComponent implements OnInit {
     });
     this.ngOnInit();
   }
+  onHideAlert() {
+    this.alertChild.nativeElement.classList.remove("show");
+  }
 
   placeAnOrder() {
-    console.log(this.carts);
     this.cartService.placeAnOrder(this.carts).subscribe(
       (data) => {
         console.log(data);
@@ -79,5 +83,11 @@ export class CartComponent implements OnInit {
         console.log(err.error.message);
       }
     );
+
+    this.alertChild.nativeElement.classList.add("show");
+
+    setTimeout(() => {
+      this.alertChild.nativeElement.classList.remove("show");
+    }, 3000);
   }
 }
