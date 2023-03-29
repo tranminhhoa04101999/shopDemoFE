@@ -40,17 +40,22 @@ export class LoginComponent implements OnInit {
     this.customerService.login(this.customer).subscribe(
       (data) => {
         localStorage.setItem("token", JSON.stringify(data));
-        this.customerService
-          .findByUsername(this.customer.username)
-          .subscribe((data) => {
-            // this.customer = data;
-            localStorage.setItem("inforUsers", JSON.stringify(data));
-            //navigate
-            data.type === 0
-              ? this.router.navigate(["homeAdmin"])
-              : this.router.navigate([""]);
-          });
-        this.customerService.logginLogin();
+        setTimeout(() => {
+          this.customerService
+            .findByUsername(this.customer.username)
+            .subscribe((data) => {
+              // this.customer = data;
+              localStorage.setItem("inforUsers", JSON.stringify(data));
+              //navigate
+              data.type === 0
+                ? this.router.navigate(["homeAdmin"])
+                : this.router.navigate([""]);
+            });
+        }, 100);
+
+        setTimeout(() => {
+          this.customerService.logginLogin();
+        }, 100);
       },
       (err) => {
         let temp = JSON.parse(err.error);

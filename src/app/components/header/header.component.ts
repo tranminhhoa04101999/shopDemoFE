@@ -16,10 +16,14 @@ export class HeaderComponent implements OnInit {
     private customerService: CustomerService
   ) {}
   logginIn = JSON.parse(localStorage.getItem("token"));
+  userType = 0;
 
   ngOnInit() {
     this.customerService.logginStatus().subscribe((loggedIn) => {
       this.logginIn = loggedIn;
+    });
+    this.customerService.getType().subscribe((data) => {
+      this.userType = data;
     });
   }
 

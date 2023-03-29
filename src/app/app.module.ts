@@ -25,6 +25,7 @@ import { UpdateItemComponent } from "./components/admin/update-item/update-item.
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
+
   { path: "userDetail", component: UserDetailComponent },
   { path: "cart", component: CartComponent, resolve: { carts: CartResolver } },
   { path: "login", component: LoginComponent },

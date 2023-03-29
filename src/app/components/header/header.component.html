@@ -1,76 +1,85 @@
-<div class="header">
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logo</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<div>
+  <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand">Logo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['/']" routerLinkActive="active"
-            >Trang Chủ <span class="sr-only">(current)</span></a
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active" *ngIf="userType === 1">
+            <a
+              *ngIf="userType === 1"
+              class="nav-link"
+              [routerLink]="['/']"
+              routerLinkActive="active"
+              >Trang Chủ <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+        <div class="d-flex" *ngIf="logginIn !== null; else logout">
+          <form class="form-inline my-2 my-lg-0" *ngIf="userType === 1">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+          <button
+            *ngIf="userType === 1"
+            class="user mx-3 btn"
+            [routerLink]="['/orders']"
+            routerLinkActive="active"
           >
-        </li>
-      </ul>
-      <div class="d-flex" *ngIf="logginIn !== null; else logout">
-        <form class="form-inline my-2 my-lg-0">
-          <input
-            class="form-control mr-sm-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-            Search
+            <i class="bi bi-calendar2-event"></i>
           </button>
-        </form>
-        <button
-          class="user mx-3 btn"
-          [routerLink]="['/orders']"
-          routerLinkActive="active"
-        >
-          <i class="bi bi-calendar2-event"></i>
-        </button>
-        <button
-          class="cart mx-3 btn"
-          [routerLink]="['/cart']"
-          routerLinkActive="active"
-        >
-          <i class="bi bi-cart2"></i>
-        </button>
-
-        <button
-          class="user mx-3 btn"
-          [routerLink]="['/userDetail']"
-          routerLinkActive="active"
-        >
-          <i class="bi bi-person-circle"></i>
-        </button>
-
-        <div>
-          <button class="cart mx-3 btn btn-warning" (click)="onLogout()">
-            Logout
+          <button
+            *ngIf="userType === 1"
+            class="cart mx-3 btn"
+            [routerLink]="['/cart']"
+            routerLinkActive="active"
+          >
+            <i class="bi bi-cart2"></i>
           </button>
+
+          <button
+            *ngIf="userType === 1"
+            class="user mx-3 btn"
+            [routerLink]="['/userDetail']"
+            routerLinkActive="active"
+          >
+            <i class="bi bi-person-circle"></i>
+          </button>
+
+          <div>
+            <button class="cart mx-3 btn btn-warning" (click)="onLogout()">
+              Logout
+            </button>
+          </div>
         </div>
+        <ng-template #logout>
+          <button
+            class="cart mx-3 btn btn-success"
+            [routerLink]="['/login']"
+            routerLinkActive="active"
+          >
+            Login
+          </button>
+        </ng-template>
       </div>
-      <ng-template #logout>
-        <button
-          class="cart mx-3 btn btn-success"
-          [routerLink]="['/login']"
-          routerLinkActive="active"
-        >
-          Login
-        </button>
-      </ng-template>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </div>

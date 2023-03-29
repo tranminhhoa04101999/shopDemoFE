@@ -10,8 +10,10 @@ import { Router } from "@angular/router";
 export class CustomerService {
   constructor(private httpClient: HttpClient, private router: Router) {}
   token: string = JSON.parse(localStorage.getItem("token"));
+  customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
 
   private loggedIn: Subject<string> = new ReplaySubject<string>();
+  private type: Subject<number> = new ReplaySubject<number>();
 
   login(customer: CustomerDto): Observable<string> {
     return this.httpClient.post("http://localhost:8080/api/login", customer, {
@@ -55,14 +57,23 @@ export class CustomerService {
   logginStatus(): Observable<string> {
     return this.loggedIn.asObservable();
   }
+  getType(): Observable<number> {
+    return this.type.asObservable();
+  }
 
   logginLogin() {
+    setTimeout(() => {
+      let customer = JSON.parse(localStorage.getItem("inforUsers"));
+      console.log(customer);
+      this.type.next(customer.type);
+    }, 100);
     this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
   }
   logginLogout() {
     localStorage.removeItem("inforUsers");
     localStorage.removeItem("token");
     this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
+    this.type.next(null);
     this.router.navigate(["login"]);
   }
 }

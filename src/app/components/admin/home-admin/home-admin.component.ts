@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { ItemDto } from "src/app/model/ItemDto.model";
+import { CustomerService } from "src/app/service/customer.service";
 
 @Component({
   selector: "app-home-admin",
@@ -7,9 +10,17 @@ import { ItemDto } from "src/app/model/ItemDto.model";
   styleUrls: ["./home-admin.component.css"],
 })
 export class HomeAdminComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
+  customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.customer.type === 1) {
+      this.router.navigate([""]);
+    }
+  }
 
   onSubmit() {}
 }
