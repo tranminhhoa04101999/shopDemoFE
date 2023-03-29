@@ -1,7 +1,9 @@
-import { Component, OnInit } from "@angular/core";
-import { Customer } from "src/app/model/customer.model";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CustomerService } from "src/app/service/customer.service";
+
+declare var $: any;
 
 @Component({
   selector: "app-login",
@@ -10,15 +12,29 @@ import { CustomerService } from "src/app/service/customer.service";
 })
 export class LoginComponent implements OnInit {
   customer: CustomerDto = new CustomerDto(0, "", "", 1);
+  @ViewChild("alertChild", { static: true }) el: ElementRef;
 
   error: { statusCode: number; message: string } = {
     statusCode: 0,
     message: "",
   };
 
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    private router: Router
+  ) {}
 
   ngOnInit() {}
+
+  show() {
+    $(this.el.nativeElement).show();
+    setTimeout(() => {
+      $(this.el.nativeElement).hide();
+    }, 3000);
+  }
+  hide() {
+    $(this.el.nativeElement).hide();
+  }
 
   onLogin() {
     this.customerService.login(this.customer).subscribe(
@@ -29,16 +45,21 @@ export class LoginComponent implements OnInit {
           .subscribe((data) => {
             // this.customer = data;
             localStorage.setItem("inforUsers", JSON.stringify(data));
+            //navigate
+            data.type === 0
+              ? this.router.navigate(["homeAdmin"])
+              : this.router.navigate([""]);
           });
         this.customerService.logginLogin();
       },
       (err) => {
         let temp = JSON.parse(err.error);
+        this.show();
+
         this.error = {
           statusCode: temp.statusCode,
           message: temp.message,
         };
-        // console.log(temp);
       }
     );
   }

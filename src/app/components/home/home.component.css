@@ -1,3 +1,16 @@
 .container-header {
   margin-top: var(--header-mt);
 }
+.card-item {
+  background-color: var(--white-color);
+  margin-top: 10px;
+  position: relative;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  transition: transform linear 0.1s;
+  will-change: transform;
+}
+
+.card-item:hover {
+  box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}

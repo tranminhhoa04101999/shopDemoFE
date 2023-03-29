@@ -1,0 +1,15 @@
+.container_homeAdmin {
+  margin-top: var(--header-mt);
+}
+
+.container {
+  width: 1300px;
+}
+
+.adminRight {
+  background-color: #eae8e8;
+}
+
+.btn {
+  width: 150px;
+}

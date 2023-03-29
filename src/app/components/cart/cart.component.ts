@@ -4,14 +4,25 @@ import { CartDto } from "src/app/model/CartDto.model";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CartService } from "src/app/service/Cart.service";
 
+declare var $: any;
+
 @Component({
   selector: "app-cart",
   templateUrl: "./cart.component.html",
   styleUrls: ["./cart.component.css"],
 })
 export class CartComponent implements OnInit {
-  @ViewChild("alertChild", { static: true }) alertChild: ElementRef;
-  @ViewChild("container", { static: true }) containerChild: ElementRef;
+  @ViewChild("alertChild", { static: true }) el: ElementRef;
+
+  show() {
+    $(this.el.nativeElement).show();
+    setTimeout(() => {
+      $(this.el.nativeElement).hide();
+    }, 3000);
+  }
+  hide() {
+    $(this.el.nativeElement).hide();
+  }
 
   carts: CartDto = new CartDto(0, new CustomerDto(0, "", "", 1), []);
   totalPrice: number = 2000;
@@ -70,9 +81,6 @@ export class CartComponent implements OnInit {
     });
     this.ngOnInit();
   }
-  onHideAlert() {
-    this.alertChild.nativeElement.classList.remove("show");
-  }
 
   placeAnOrder() {
     this.cartService.placeAnOrder(this.carts).subscribe(
@@ -83,11 +91,6 @@ export class CartComponent implements OnInit {
         console.log(err.error.message);
       }
     );
-
-    this.alertChild.nativeElement.classList.add("show");
-
-    setTimeout(() => {
-      this.alertChild.nativeElement.classList.remove("show");
-    }, 3000);
+    this.show();
   }
 }

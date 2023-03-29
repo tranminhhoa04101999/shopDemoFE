@@ -1,13 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { ItemDto } from "src/app/model/ItemDto.model";
 import { CartService } from "src/app/service/Cart.service";
 import { ItemService } from "src/app/service/ItemService.service";
 
-const formatter = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "VND",
-});
+declare var $: any;
+
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -16,6 +14,17 @@ const formatter = new Intl.NumberFormat("en-US", {
 export class HomeComponent implements OnInit {
   items: ItemDto[] = [{ id: 0, name: "", price: 0 }];
   Customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
+  @ViewChild("alertChild", { static: true }) el: ElementRef;
+
+  show() {
+    $(this.el.nativeElement).show();
+    setTimeout(() => {
+      $(this.el.nativeElement).hide();
+    }, 3000);
+  }
+  hide() {
+    $(this.el.nativeElement).hide();
+  }
 
   constructor(
     private itemService: ItemService,
@@ -32,6 +41,8 @@ export class HomeComponent implements OnInit {
         quantity: 1,
         customerId: this.Customer.id,
       })
-      .subscribe((data) => console.log(data));
+      .subscribe((data) => {
+        this.show();
+      });
   }
 }

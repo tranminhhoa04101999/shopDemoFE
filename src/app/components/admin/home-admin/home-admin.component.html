@@ -1,0 +1,21 @@
+<div class="container container_homeAdmin">
+  <div class="row">
+    <div class="col-lg-3">
+      <button
+        class="btn btn-primary my-2 ml-5"
+        [routerLink]="['/homeAdmin/item']"
+      >
+        sản phẩm
+      </button>
+      <button
+        class="btn btn-success my-2 ml-5"
+        [routerLink]="['/homeAdmin/addItem']"
+      >
+        thêm sản phẩm
+      </button>
+    </div>
+    <div class="col-lg-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

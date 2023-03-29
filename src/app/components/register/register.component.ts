@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     this.customerService.save(this.customer).subscribe(
       (data) => console.log(data),
       (err) => {
-        console.log(err.error.message);
+        console.log(err.error);
       }
     );
   }

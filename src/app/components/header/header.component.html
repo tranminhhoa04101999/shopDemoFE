@@ -21,44 +21,46 @@
           >
         </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input
-          class="form-control mr-sm-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
+      <div class="d-flex" *ngIf="logginIn !== null; else logout">
+        <form class="form-inline my-2 my-lg-0">
+          <input
+            class="form-control mr-sm-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
+        </form>
+        <button
+          class="user mx-3 btn"
+          [routerLink]="['/orders']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-calendar2-event"></i>
         </button>
-      </form>
-      <button
-        class="user mx-3 btn"
-        [routerLink]="['/orders']"
-        routerLinkActive="active"
-      >
-        <i class="bi bi-calendar2-event"></i>
-      </button>
-      <button
-        class="cart mx-3 btn"
-        [routerLink]="['/cart']"
-        routerLinkActive="active"
-      >
-        <i class="bi bi-cart2"></i>
-      </button>
-
-      <button
-        class="user mx-3 btn"
-        [routerLink]="['/userDetail']"
-        routerLinkActive="active"
-      >
-        <i class="bi bi-person-circle"></i>
-      </button>
-
-      <div *ngIf="logginIn !== null; else logout">
-        <button class="cart mx-3 btn btn-warning" (click)="onLogout()">
-          Logout
+        <button
+          class="cart mx-3 btn"
+          [routerLink]="['/cart']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-cart2"></i>
         </button>
+
+        <button
+          class="user mx-3 btn"
+          [routerLink]="['/userDetail']"
+          routerLinkActive="active"
+        >
+          <i class="bi bi-person-circle"></i>
+        </button>
+
+        <div>
+          <button class="cart mx-3 btn btn-warning" (click)="onLogout()">
+            Logout
+          </button>
+        </div>
       </div>
       <ng-template #logout>
         <button

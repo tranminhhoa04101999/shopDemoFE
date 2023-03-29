@@ -18,6 +18,10 @@ import { JwtInterceptor } from "./service/jwt.interceptor";
 import { RegisterComponent } from "./components/register/register.component";
 import { OrdersComponent } from "./components/orders/orders.component";
 import { OrderService } from "./service/Order.service";
+import { HomeAdminComponent } from "./components/admin/home-admin/home-admin.component";
+import { ItemComponent } from "./components/admin/item/item.component";
+import { AddItemComponent } from "./components/admin/add-item/add-item.component";
+import { UpdateItemComponent } from "./components/admin/update-item/update-item.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -26,6 +30,15 @@ const appRoutes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "orders", component: OrdersComponent },
+  {
+    path: "homeAdmin",
+    component: HomeAdminComponent,
+    children: [
+      { path: "item", component: ItemComponent },
+      { path: "addItem", component: AddItemComponent },
+      { path: "update/:id", component: UpdateItemComponent },
+    ],
+  },
 ];
 
 @NgModule({
@@ -38,6 +51,10 @@ const appRoutes: Routes = [
     CartComponent,
     RegisterComponent,
     OrdersComponent,
+    HomeAdminComponent,
+    ItemComponent,
+    AddItemComponent,
+    UpdateItemComponent,
   ],
   imports: [
     BrowserModule,

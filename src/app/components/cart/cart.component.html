@@ -1,17 +1,13 @@
-<div class="container container-cart" style="position: relative" #container>
+<div class="container container-cart">
   <div
     #alertChild
-    class="alert alert-success alert-dismissible fade show"
+    class="alert alert-success alert-dismissible fade show position-fixed"
     role="alert"
-    style="position: absolute; top: 0; right: 0; z-index: 1"
+    id="alertShow"
+    style="z-index: 5; right: 0; top: 100px; display: none"
   >
-    <strong>Đặt hàng thành công!</strong
-    ><button
-      type="button"
-      class="close"
-      aria-label="Close"
-      (click)="onHideAlert()"
-    >
+    <strong>Đặt hàng thành công!</strong>
+    <button (click)="hide()" type="button" class="close" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -83,6 +79,7 @@
         <h5>{{ totalPrice | currency : "VND" }}</h5>
       </div>
       <button
+        *ngIf="carts.cartDetailDtos.length > 0"
         type="button"
         class="btn btn-dark btn-block btn-lg btn_order"
         data-mdb-ripple-color="dark"

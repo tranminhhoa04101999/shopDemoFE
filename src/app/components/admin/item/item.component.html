@@ -1,0 +1,33 @@
+<div class="">
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let item of items">
+      <div class="card" style="width: 10rem">
+        <div
+          class="d=flex card-body"
+          style="align-items: center; justify-content: center"
+        >
+          <img
+            class="card-img-top img_item_admin"
+            src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+            alt="Card image cap"
+          />
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.price | currency : "VND" }}</p>
+          <a
+            class="btn btn-primary"
+            [routerLink]="['/homeAdmin/update/', item.id]"
+            routerLinkActive="active"
+            ><i class="bi bi-pencil-square"></i
+          ></a>
+          <a
+            class="btn btn-danger ml-2"
+            (click)="onDeleteItem({ idItem: item.id })"
+            ><i class="bi bi-trash"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
