@@ -12,4 +12,47 @@
 
 .btn {
   width: 150px;
+  transition: transform linear 0.2s;
+  will-change: transform;
+  position: relative;
+}
+.btn:hover {
+  color: rgb(218, 213, 213);
+  background-color: #2c92ff;
+  border-color: #2c92ff;
+  transform: translateX(10px);
+}
+.btn:hover.btn::before {
+  display: block;
+}
+.btn::before {
+  display: none;
+  content: "";
+  top: 50%;
+  left: -12px;
+  transform: translateY(-50%);
+  position: absolute;
+  border: 8px solid;
+  border-color: transparent transparent transparent #2c92ff;
+}
+.title {
+  width: 100%;
+  border-bottom: 1px solid #999;
+  text-align: center;
+  margin: 5px 0;
+}
+.container-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.active.btn::before {
+  display: block;
+}
+.active.btn {
+  color: rgb(218, 213, 213) !important;
+  background-color: #2c92ff !important;
+  border-color: #2c92ff !important;
+  transform: translateX(10px) !important;
 }

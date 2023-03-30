@@ -12,6 +12,8 @@ import { ItemService } from "src/app/service/ItemService.service";
 export class ItemComponent implements OnInit {
   items: ItemDto[] = [{ id: 0, name: "", price: 0 }];
   Customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
+  idDelete = 0;
+
   constructor(
     private itemService: ItemService,
     private cartService: CartService
@@ -21,11 +23,24 @@ export class ItemComponent implements OnInit {
     this.itemService.findAll().subscribe((data) => (this.items = data));
   }
 
-  onDeleteItem(event) {
-    this.itemService.delete(event.idItem).subscribe(
+  // onDeleteItem(event: { idItem: number }) {
+  //   this.itemService.delete(event.idItem).subscribe(
+  //     (data) => {
+  //       //xoa o local
+  //       let index = this.items.findIndex((item) => item.id === event.idItem);
+  //       this.items.splice(index, 1);
+  //       //
+  //     },
+  //     (err) => {
+  //       console.log(err.error);
+  //     }
+  //   );
+  // }
+  onDeleteItem() {
+    this.itemService.delete(this.idDelete).subscribe(
       (data) => {
         //xoa o local
-        let index = this.items.findIndex((item) => item.id === event.idItem);
+        let index = this.items.findIndex((item) => item.id === this.idDelete);
         this.items.splice(index, 1);
         //
       },
@@ -33,5 +48,8 @@ export class ItemComponent implements OnInit {
         console.log(err.error);
       }
     );
+  }
+  onGanId(event: { id: number }) {
+    this.idDelete = event.id;
   }
 }

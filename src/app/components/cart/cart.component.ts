@@ -68,7 +68,6 @@ export class CartComponent implements OnInit {
       const index = this.carts.cartDetailDtos.findIndex(
         (item) => item.id === event.id
       );
-      console.log("index", index);
       this.carts.cartDetailDtos.splice(index, 1);
       this.ngOnInit();
     });
@@ -84,9 +83,7 @@ export class CartComponent implements OnInit {
 
   placeAnOrder() {
     this.cartService.placeAnOrder(this.carts).subscribe(
-      (data) => {
-        console.log(data);
-      },
+      (data) => {},
       (err) => {
         console.log(err.error.message);
       }

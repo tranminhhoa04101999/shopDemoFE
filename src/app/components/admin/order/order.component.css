@@ -1,0 +1,12 @@
+.card {
+  transition: transform linear 0.2s;
+}
+.card:hover {
+  transform: translateY(-4px) translateX(4px);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+.container-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

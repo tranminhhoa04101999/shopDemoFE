@@ -1,0 +1,48 @@
+<div
+  class="container w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded"
+  *ngIf="orderDetails.length > 0"
+>
+  <div class="row h-25 border-bottom m-2 header">
+    <div>
+      Người đặt:
+      <span>{{ order.customerDto.username }}</span>
+    </div>
+    <div class="ml-5">
+      Ngày đặt: <span>{{ order.orderDate }}</span>
+    </div>
+    <div class="ml-5">
+      Tổng tiền: <span>{{ totalPrice | currency : "VND" }}</span>
+    </div>
+    <div class="" style="margin-left: 200px">
+      Trạng thái:
+      <span>{{ order.status === 0 ? "Pending" : "Done" }}</span>
+    </div>
+    <button
+      class="btn btn-primary ml-5"
+      (click)="onChangeStatus({ order: order })"
+    >
+      Thay đổi
+    </button>
+  </div>
+  <div class="row">
+    <div class="w-100 m-2" *ngFor="let orderDetail of orderDetails">
+      <div class="row orderCart border-bottom d-flex align-items-center">
+        <div class="col-2">
+          <img
+            src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+            alt="dongho"
+            class="img_orderdetail"
+          />
+        </div>
+        <div class="col-4 font-weight-bold">
+          <span>{{ orderDetail.itemDto.name }}</span>
+        </div>
+
+        <div class="col-4">
+          <span>{{ orderDetail.itemDto.price | currency : "VND" }}</span>
+        </div>
+        <div class="col-2">x{{ orderDetail.quantity }}</div>
+      </div>
+    </div>
+  </div>
+</div>

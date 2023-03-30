@@ -1,12 +1,12 @@
 <div class="container container-cart">
   <div
     #alertChild
-    class="alert alert-success alert-dismissible fade show position-fixed"
+    class="alert alert-dismissible fade show position-fixed"
     role="alert"
     id="alertShow"
     style="z-index: 5; right: 0; top: 100px; display: none"
   >
-    <strong>Đặt hàng thành công!</strong>
+    <strong class="strong">Đặt hàng thành công!</strong>
     <button (click)="hide()" type="button" class="close" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -28,39 +28,47 @@
         </button>
       </div>
       <!-- item incart -->
-      <div>
-        <h2>{{ errorMessage }}</h2>
-      </div>
-      <div
-        class="row itemInCart border-bottom d-flex align-items-center"
-        *ngFor="let temp of carts.cartDetailDtos"
-      >
-        <div class="col-2">
-          <img
-            src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
-            alt="dongho"
-            class="img_itemCart"
-          />
+      <div class="container-listItem" style="padding-right: 15px">
+        <div>
+          <h2>{{ errorMessage }}</h2>
         </div>
-        <div class="col-4 font-weight-bold">
-          <span>{{ temp.itemDto.name }}</span>
-        </div>
-        <div class="col-3">
-          <button class="btn px-2 mr-1" (click)="subQuantity({ id: temp.id })">
-            -
-          </button>
-          <input type="number" min="1" [(ngModel)]="temp.quantity" />
-          <button class="btn px-2 ml-1" (click)="addQuantity({ id: temp.id })">
-            +
-          </button>
-        </div>
-        <div class="col-2">
-          <span>{{ temp.itemDto.price | currency : "VND" }}</span>
-        </div>
-        <div class="col-1">
-          <button class="btn" (click)="onDelete({ id: temp.id })">
-            <i class="bi bi-trash"></i>
-          </button>
+        <div
+          class="row itemInCart border-bottom d-flex align-items-center"
+          *ngFor="let temp of carts.cartDetailDtos"
+        >
+          <div class="col-2">
+            <img
+              src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+              alt="dongho"
+              class="img_itemCart"
+            />
+          </div>
+          <div class="col-4 font-weight-bold">
+            <span>{{ temp.itemDto.name }}</span>
+          </div>
+          <div class="col-3">
+            <button
+              class="btn px-2 mr-1"
+              (click)="subQuantity({ id: temp.id })"
+            >
+              -
+            </button>
+            <input type="number" min="1" [(ngModel)]="temp.quantity" />
+            <button
+              class="btn px-2 ml-1"
+              (click)="addQuantity({ id: temp.id })"
+            >
+              +
+            </button>
+          </div>
+          <div class="col-2">
+            <span>{{ temp.itemDto.price | currency : "VND" }}</span>
+          </div>
+          <div class="col-1">
+            <button class="btn" (click)="onDelete({ id: temp.id })">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
         </div>
       </div>
       <!--  -->

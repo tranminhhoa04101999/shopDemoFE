@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+span {
+  font-weight: bold;
+}
+.container-orders {
+  margin-top: var(--header-mt);
+  max-width: 1200px;
+}
+.img_orderdetail {
+  width: 100px;
+}
+.orderCart {
+  height: 100px;
+}

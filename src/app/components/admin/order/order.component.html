@@ -1,0 +1,39 @@
+<div>
+  <div class="pb-2 d-flex align-item-center">
+    <input
+      type="checkbox"
+      [(ngModel)]="filterPending"
+      (click)="onCheckbx($event)"
+    />
+    <span class="ml-1">Đang đợi</span>
+  </div>
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let order of orders">
+      <div class="card mb-3">
+        <div class="row p-2 container-row">
+          <div class="col-8">
+            <div>Người đặt: {{ order.customerDto.username }}</div>
+            <div>Ngày đặt: {{ order.orderDate }}</div>
+          </div>
+          <div class="col-2">
+            <div
+              *ngIf="order.status === 0"
+              class="spinner-border text-warning"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div class="col-2">
+            <button
+              class="btn btn-primary"
+              (click)="onUpdate({ id: order.id })"
+            >
+              <i class="bi bi-pencil-square"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -28,4 +28,16 @@ export class OrderService {
       )
       .pipe();
   }
+
+  findAll(): Observable<OrderDto[]> {
+    return this.httpClient
+      .get<OrderDto[]>("http://localhost:8080/api/orders", httpOptions)
+      .pipe();
+  }
+
+  updateOrder(order: OrderDto): Observable<OrderDto> {
+    return this.httpClient
+      .put<OrderDto>("http://localhost:8080/api/orders", order, httpOptions)
+      .pipe();
+  }
 }

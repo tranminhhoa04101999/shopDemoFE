@@ -1,7 +1,21 @@
 <div
-  class="form d-flex vh-100 justify-content-center align-items-center form-register wrapper-register"
+  class="form d-flex vh-100 justify-content-center align-items-center form-register"
 >
-  <div class="container h-75 shadow-lg bg-white container-register w-25">
+  <div
+    class="container h-50 shadow-lg bg-white container-register wrapper-register w-25"
+  >
+    <div
+      #alertChild
+      class="alert alert-success alert-dismissible fade show position-fixed"
+      role="alert"
+      id="alertShow"
+      style="z-index: 5; right: 0; top: 100px; display: none"
+    >
+      <strong>Thêm sản phẩm thành công!</strong>
+      <button (click)="hide()" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <form (ngSubmit)="onRegister()" #registerForm="ngForm">
       <div class="row mt-5">
         <div class="col-12">
@@ -58,7 +72,9 @@
       <div class="row d-flex justify-content-center">
         <div class="col-5 text-center">
           <p>
-            <a href="#">Đăng nhập</a>
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active"
+              >Đăng nhập</a
+            >
           </p>
         </div>
       </div>

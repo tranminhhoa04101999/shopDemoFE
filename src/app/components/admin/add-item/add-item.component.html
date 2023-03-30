@@ -1,4 +1,16 @@
-<div class="container w-50">
+<div class="container w-50 shadow-lg rounded p-3">
+  <div
+    #alertChild
+    class="alert alert-success alert-dismissible fade show position-fixed"
+    role="alert"
+    id="alertShow"
+    style="z-index: 5; right: 0; top: 100px; display: none"
+  >
+    <strong>Thêm sản phẩm thành công!</strong>
+    <button (click)="hide()" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="form-group">
       <label for="exampleInputEmail1">Tên sản phẩm</label>

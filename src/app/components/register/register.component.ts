@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CustomerService } from "src/app/service/customer.service";
+
+declare var $: any;
 
 @Component({
   selector: "app-register",
@@ -9,16 +11,33 @@ import { CustomerService } from "src/app/service/customer.service";
 })
 export class RegisterComponent implements OnInit {
   customer: CustomerDto = { id: 0, username: "", password: "", type: 1 };
+  @ViewChild("alertChild", { static: true }) el: ElementRef;
 
+  show(message: string, alert: string) {
+    $(this.el.nativeElement).find("strong").first().text(message);
+    $(this.el.nativeElement).addClass(alert);
+    $(this.el.nativeElement).show();
+    setTimeout(() => {
+      this.hide();
+    }, 3000);
+  }
+  hide() {
+    $(this.el.nativeElement).removeClass("alert-success");
+    $(this.el.nativeElement).removeClass("alert-warning");
+    $(this.el.nativeElement).hide();
+  }
   constructor(private customerService: CustomerService) {}
 
   ngOnInit() {}
 
   onRegister() {
     this.customerService.save(this.customer).subscribe(
-      (data) => console.log(data),
+      (data) => {
+        this.show("Đăng ký thành công !!!", "alert-success");
+        this.customer = { id: 0, username: "", password: "", type: 1 };
+      },
       (err) => {
-        console.log(err.error);
+        this.show("Đăng ký thất bại !!!", "alert-warning");
       }
     );
   }

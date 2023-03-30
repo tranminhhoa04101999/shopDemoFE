@@ -46,6 +46,8 @@ export class LoginComponent implements OnInit {
             .subscribe((data) => {
               // this.customer = data;
               localStorage.setItem("inforUsers", JSON.stringify(data));
+              localStorage.setItem("userType", JSON.stringify(data.type));
+
               //navigate
               data.type === 0
                 ? this.router.navigate(["homeAdmin"])

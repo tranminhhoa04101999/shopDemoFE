@@ -1,10 +1,13 @@
 <div class="container container-orders">
-  <div class="row">
+  <div class="row" style="max-height: 600px">
     <div class="col-lg-4">
       <div class="card" *ngFor="let item of orders">
         <div class="card-body">
-          <h5 class="card-title">Ngày đặt: {{ item.orderdate }}</h5>
+          <h5 class="card-title">Ngày đặt: {{ item.orderDate }}</h5>
           <p class="card-text">username: {{ item.customerDto.username }}</p>
+          <p class="card-text">
+            Trạng thái: {{ item.status === 0 ? "Pending" : "Done" }}
+          </p>
           <button
             class="btn btn-primary"
             (click)="showDetails({ idOrder: item.id })"

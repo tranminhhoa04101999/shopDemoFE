@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
     private customerService: CustomerService
   ) {}
   logginIn = JSON.parse(localStorage.getItem("token"));
-  userType = 0;
+  userType = JSON.parse(localStorage.getItem("userType"));
 
   ngOnInit() {
     this.customerService.logginStatus().subscribe((loggedIn) => {

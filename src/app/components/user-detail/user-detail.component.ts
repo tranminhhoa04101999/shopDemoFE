@@ -16,7 +16,6 @@ export class UserDetailComponent implements OnInit {
     const customer: CustomerDto = JSON.parse(
       localStorage.getItem("inforUsers")
     );
-    console.log(customer);
     if (customer !== null) {
       this.customerService
         .findById(customer.id)

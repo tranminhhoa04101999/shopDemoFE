@@ -1,19 +1,35 @@
-<div class="container container_homeAdmin">
+<div class="container-fluid container_homeAdmin">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-2 border-right container-left">
+      <div class="title">
+        <h5 class="font-weight-bold">Sản phẩm</h5>
+      </div>
       <button
-        class="btn btn-primary my-2 ml-5"
+        class="btn btn-secondary my-2"
         [routerLink]="['/homeAdmin/item']"
+        routerLinkActive="active"
       >
         sản phẩm
       </button>
       <button
-        class="btn btn-success my-2 ml-5"
+        class="btn btn-secondary my-2"
         [routerLink]="['/homeAdmin/addItem']"
+        routerLinkActive="active"
       >
         thêm sản phẩm
       </button>
+      <div class="title mt-5">
+        <h5 class="font-weight-bold">Đơn hàng</h5>
+      </div>
+      <button
+        class="btn btn-secondary my-2"
+        [routerLink]="['/homeAdmin/order']"
+        routerLinkActive="active"
+      >
+        Đơn hàng
+      </button>
     </div>
+
     <div class="col-lg-9">
       <router-outlet></router-outlet>
     </div>

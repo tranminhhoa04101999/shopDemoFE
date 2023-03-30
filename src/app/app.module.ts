@@ -22,6 +22,8 @@ import { HomeAdminComponent } from "./components/admin/home-admin/home-admin.com
 import { ItemComponent } from "./components/admin/item/item.component";
 import { AddItemComponent } from "./components/admin/add-item/add-item.component";
 import { UpdateItemComponent } from "./components/admin/update-item/update-item.component";
+import { OrderComponent } from "./components/admin/order/order.component";
+import { OrderDetailComponent } from "./components/admin/order-detail/order-detail.component";
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -38,6 +40,8 @@ const appRoutes: Routes = [
       { path: "item", component: ItemComponent },
       { path: "addItem", component: AddItemComponent },
       { path: "update/:id", component: UpdateItemComponent },
+      { path: "order", component: OrderComponent },
+      { path: "order/:id", component: OrderDetailComponent },
     ],
   },
 ];
@@ -56,6 +60,8 @@ const appRoutes: Routes = [
     ItemComponent,
     AddItemComponent,
     UpdateItemComponent,
+    OrderComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,

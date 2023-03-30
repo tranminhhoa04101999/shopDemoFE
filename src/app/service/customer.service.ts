@@ -64,7 +64,6 @@ export class CustomerService {
   logginLogin() {
     setTimeout(() => {
       let customer = JSON.parse(localStorage.getItem("inforUsers"));
-      console.log(customer);
       this.type.next(customer.type);
     }, 100);
     this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
@@ -72,6 +71,7 @@ export class CustomerService {
   logginLogout() {
     localStorage.removeItem("inforUsers");
     localStorage.removeItem("token");
+    localStorage.removeItem("userType");
     this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
     this.type.next(null);
     this.router.navigate(["login"]);

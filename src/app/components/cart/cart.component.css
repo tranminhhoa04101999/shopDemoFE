@@ -28,3 +28,7 @@
   max-width: 200px;
   margin: 200px auto 0;
 }
+.container-listItem {
+  overflow: auto;
+  max-height: 600px;
+}
