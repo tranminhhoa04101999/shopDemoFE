@@ -1,7 +1,7 @@
 <div class="container container-cart">
   <div
     #alertChild
-    class="alert alert-dismissible fade show position-fixed"
+    class="alert alert-success alert-dismissible fade show position-fixed"
     role="alert"
     id="alertShow"
     style="z-index: 5; right: 0; top: 100px; display: none"
@@ -19,18 +19,16 @@
         class="row pt-5 pb-3 px-3 d-flex justify-content-between align-items-center border-bottom"
       >
         <h2 class="font-weight-bold mb-0 text-black">Giỏ Hàng</h2>
-        <button
-          *ngIf="carts.cartDetailDtos.length > 0"
-          class="btn btn-primary"
-          (click)="onUpdateCart()"
-        >
-          Cập nhật giỏ
-        </button>
       </div>
       <!-- item incart -->
       <div class="container-listItem" style="padding-right: 15px">
         <div>
           <h2>{{ errorMessage }}</h2>
+        </div>
+        <div *ngIf="carts.cartDetailDtos.length === 0" class="empty-cart">
+          <span>Giỏ hàng trống hãy</span>
+          <a class="m-3" [routerLink]="['/']">đi đặt nào</a>
+          <i class="bi bi-basket"></i>
         </div>
         <div
           class="row itemInCart border-bottom d-flex align-items-center"
@@ -46,22 +44,28 @@
           <div class="col-4 font-weight-bold">
             <span>{{ temp.itemDto.name }}</span>
           </div>
-          <div class="col-3">
+          <div class="col-3 d-flex align-item-center">
             <button
-              class="btn px-2 mr-1"
+              class="btn-quantity btn"
               (click)="subQuantity({ id: temp.id })"
             >
               -
             </button>
-            <input type="number" min="1" [(ngModel)]="temp.quantity" />
+            <input
+              class="input-quantity"
+              type="number"
+              (change)="onUpdateCart()"
+              min="1"
+              [(ngModel)]="temp.quantity"
+            />
             <button
-              class="btn px-2 ml-1"
+              class="btn-quantity btn"
               (click)="addQuantity({ id: temp.id })"
             >
               +
             </button>
           </div>
-          <div class="col-2">
+          <div class="col-2" style="color: var(--primary-color-red)">
             <span>{{ temp.itemDto.price | currency : "VND" }}</span>
           </div>
           <div class="col-1">
@@ -82,9 +86,11 @@
       </div>
       <!--  -->
       <div class="d-flex justify-content-between my-5 mx-5">
-        <h5 class="text-uppercase">Total price</h5>
+        <h5 class="text-uppercase">Tổng tiền</h5>
 
-        <h5>{{ totalPrice | currency : "VND" }}</h5>
+        <h5>
+          {{ totalPrice | currency : "VND" }}
+        </h5>
       </div>
       <button
         *ngIf="carts.cartDetailDtos.length > 0"

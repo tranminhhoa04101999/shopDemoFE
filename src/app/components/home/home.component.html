@@ -20,10 +20,10 @@
           src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
           alt="Card image cap"
         />
-        <div class="card-body">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.price | currency : "VND" }}</p>
-          <a class="btn btn-primary" (click)="onAddToCart({ id: item.id })"
+        <div class="card-body p-0">
+          <h5 class="card-title pt-3 pl-3">{{ item.name }}</h5>
+          <p class="card-text pl-3">{{ item.price | currency : "VND" }}</p>
+          <a class="btn btn-item" (click)="onAddToCart({ id: item.id })"
             >Thêm vào giỏ</a
           >
         </div>

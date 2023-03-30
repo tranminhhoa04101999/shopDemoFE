@@ -15,11 +15,12 @@
   transition: transform linear 0.2s;
   will-change: transform;
   position: relative;
+  outline: none;
 }
 .btn:hover {
   color: rgb(218, 213, 213);
-  background-color: #2c92ff;
-  border-color: #2c92ff;
+  background-color: var(--primary-color-red);
+  border-color: var(--primary-color-red);
   transform: translateX(10px);
 }
 .btn:hover.btn::before {
@@ -33,7 +34,7 @@
   transform: translateY(-50%);
   position: absolute;
   border: 8px solid;
-  border-color: transparent transparent transparent #2c92ff;
+  border-color: transparent transparent transparent var(--primary-color-red);
 }
 .title {
   width: 100%;
@@ -52,7 +53,7 @@
 }
 .active.btn {
   color: rgb(218, 213, 213) !important;
-  background-color: #2c92ff !important;
-  border-color: #2c92ff !important;
+  background-color: var(--primary-color-red) !important;
+  border-color: var(--primary-color-red) !important;
   transform: translateX(10px) !important;
 }

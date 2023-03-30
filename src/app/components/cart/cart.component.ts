@@ -53,6 +53,10 @@ export class CartComponent implements OnInit {
 
     this.carts.cartDetailDtos = cartNew;
     // this.ngOnInit();
+    cartNew.map((temp) => {
+      temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
+      this.cartService.updateCart(temp).subscribe();
+    });
   }
   addQuantity(event: { id: number }) {
     const cartNew = this.carts.cartDetailDtos.map((temp) =>
@@ -61,6 +65,10 @@ export class CartComponent implements OnInit {
 
     this.carts.cartDetailDtos = cartNew;
     // this.ngOnInit();
+    cartNew.map((temp) => {
+      temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
+      this.cartService.updateCart(temp).subscribe();
+    });
   }
   onDelete(event: { id: number }) {
     this.cartService.deleteCartDetail(event.id).subscribe((data) => {
