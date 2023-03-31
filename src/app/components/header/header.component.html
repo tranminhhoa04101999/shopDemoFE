@@ -31,16 +31,22 @@
             <input
               class="form-control mr-sm-2"
               type="search"
+              name="searchInput"
               placeholder="Search"
               aria-label="Search"
+              [(ngModel)]="searchInput"
             />
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">
+            <button
+              class="btn btn-outline-danger my-2 my-sm-0"
+              type="submit"
+              (click)="onSearch()"
+            >
               <i class="bi bi-search"></i>
             </button>
           </form>
           <button
             *ngIf="userType === 1"
-            class="user mx-3 btn"
+            class="user mx-3 btn btn-animation"
             [routerLink]="['/orders']"
             routerLinkActive="active"
           >
@@ -48,7 +54,7 @@
           </button>
           <button
             *ngIf="userType === 1"
-            class="cart mx-3 btn"
+            class="cart mx-3 btn btn-animation"
             [routerLink]="['/cart']"
             routerLinkActive="active"
           >
@@ -57,7 +63,7 @@
 
           <button
             *ngIf="userType === 1"
-            class="user mx-3 btn"
+            class="user mx-3 btn btn-animation"
             [routerLink]="['/userDetail']"
             routerLinkActive="active"
           >
@@ -76,7 +82,8 @@
         </div>
         <ng-template #logout>
           <button
-            class="cart mx-3 btn btn-success"
+            class="cart mx-3 btn"
+            style="color: var(--primary-color-red)"
             [routerLink]="['/login']"
             routerLinkActive="active"
           >

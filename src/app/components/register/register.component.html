@@ -11,7 +11,7 @@
       id="alertShow"
       style="z-index: 5; right: 0; top: 100px; display: none"
     >
-      <strong>Thêm sản phẩm thành công!</strong>
+      <strong>Thêm tài khoản thành công!</strong>
       <button (click)="hide()" type="button" class="close" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -25,6 +25,7 @@
               type="text"
               class="form-control"
               name="username"
+              placeholder="Nhập tài khoản"
               required
               [(ngModel)]="customer.username"
               #username="ngModel"
@@ -46,6 +47,7 @@
               type="password"
               name="password"
               class="form-control"
+              placeholder="Nhập mật khẩu"
               [(ngModel)]="customer.password"
               required
               #password="ngModel"

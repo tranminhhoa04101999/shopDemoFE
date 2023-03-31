@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
-import { ItemDto } from "src/app/model/ItemDto.model";
 import { CustomerService } from "src/app/service/customer.service";
 
 @Component({
@@ -17,8 +16,12 @@ export class HomeAdminComponent implements OnInit {
   customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
 
   ngOnInit() {
-    if (this.customer.type === 1) {
-      this.router.navigate([""]);
+    if (this.customer === null) {
+      this.router.navigate(["/login"]);
+    } else {
+      if (this.customer.type === 1) {
+        this.router.navigate([""]);
+      }
     }
   }
 

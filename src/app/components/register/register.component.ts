@@ -37,7 +37,8 @@ export class RegisterComponent implements OnInit {
         this.customer = { id: 0, username: "", password: "", type: 1 };
       },
       (err) => {
-        this.show("Đăng ký thất bại !!!", "alert-warning");
+        this.show(`Đăng ký thất bại !! ${err.error.message}`, "alert-warning");
+        console.log(err.error);
       }
     );
   }

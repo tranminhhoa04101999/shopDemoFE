@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, ReplaySubject, Subject } from "rxjs";
 import { ItemDto } from "../model/ItemDto.model";
 
 const httpOptions = {
@@ -12,6 +12,8 @@ const httpOptions = {
 @Injectable({ providedIn: "root" })
 export class ItemService {
   constructor(private httpClient: HttpClient) {}
+
+  private searchInput: Subject<string> = new ReplaySubject<string>();
 
   findAll(): Observable<ItemDto[]> {
     return this.httpClient.get<ItemDto[]>(
@@ -42,5 +44,13 @@ export class ItemService {
     return this.httpClient
       .put<ItemDto>("http://localhost:8080/api/items", item, httpOptions)
       .pipe();
+  }
+
+  getSearchInput(): Observable<string> {
+    return this.searchInput.asObservable();
+  }
+
+  setSearchInput(chuoi: string) {
+    this.searchInput.next(chuoi);
   }
 }

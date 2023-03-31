@@ -91,7 +91,9 @@ export class CartComponent implements OnInit {
 
   placeAnOrder() {
     this.cartService.placeAnOrder(this.carts).subscribe(
-      (data) => {},
+      (data) => {
+        this.carts = new CartDto(0, new CustomerDto(0, "", "", 1), []);
+      },
       (err) => {
         console.log(err.error.message);
       }

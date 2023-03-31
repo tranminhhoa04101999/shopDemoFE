@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
   Resolve,
+  Router,
   RouterStateSnapshot,
 } from "@angular/router";
 import { Observable } from "rxjs";
@@ -11,13 +12,16 @@ import { CartService } from "../service/Cart.service";
 
 @Injectable()
 export class CartResolver implements Resolve<CartDto> {
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private router: Router) {}
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): CartDto | Observable<CartDto> | Promise<CartDto> {
     let customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
 
+    if (customer === null) {
+      this.router.navigate(["/login"]);
+    }
     return this.cartService.FindByIdCustomer(customer.id);
   }
 }

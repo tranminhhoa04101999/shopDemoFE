@@ -4,3 +4,21 @@
   width: 100%;
   top: 0;
 }
+.btn-animation:hover {
+  animation-name: test;
+  animation-duration: 0.2s;
+  background-color: var(--primary-color-red);
+  color: white;
+}
+
+@keyframes test {
+  0% {
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+
+  100% {
+    transform: rotate(-15deg);
+  }
+}

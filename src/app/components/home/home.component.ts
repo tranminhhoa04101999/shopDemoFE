@@ -31,9 +31,26 @@ export class HomeComponent implements OnInit {
     private cartService: CartService
   ) {}
 
+  private searchInput = "";
+
   ngOnInit() {
     this.itemService.findAll().subscribe((data) => (this.items = data));
+
+    this.itemService.getSearchInput().subscribe((data) => {
+      this.searchInput = data;
+
+      this.itemService.findAll().subscribe((data2) => {
+        if (data === "") {
+          this.items = data2;
+        } else {
+          this.items = data2.filter((item) =>
+            item.name.toLowerCase().includes(data.toLowerCase())
+          );
+        }
+      });
+    });
   }
+
   onAddToCart(event: { id: number }) {
     this.cartService
       .addItemToCart({
