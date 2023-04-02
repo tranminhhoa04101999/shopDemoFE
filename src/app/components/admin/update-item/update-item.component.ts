@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ItemDto } from "src/app/model/ItemDto.model";
 import { ItemService } from "src/app/service/ItemService.service";
+import { ConfirmModelComponent } from "../../base/confirm-model/confirm-model.component";
 
 @Component({
   selector: "app-update-item",
@@ -30,13 +31,17 @@ export class UpdateItemComponent implements OnInit {
   }
 
   onSubmit() {
+    // console.log(this.item);
     this.itemService.update(this.item).subscribe(
       (data) => {
-        this.router.navigate(["/homeAdmin/item"]);
+        // this.router.navigate(["/homeAdmin/item"]);
       },
       (err) => {
         console.log(err.error);
       }
     );
+  }
+  ontest() {
+    console.log("ecec");
   }
 }

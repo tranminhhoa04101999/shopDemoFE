@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { EventEmitter, Injectable } from "@angular/core";
 import { Observable, ReplaySubject, Subject } from "rxjs";
 import { ItemDto } from "../model/ItemDto.model";
 
@@ -14,6 +14,7 @@ export class ItemService {
   constructor(private httpClient: HttpClient) {}
 
   private searchInput: Subject<string> = new ReplaySubject<string>();
+  public alertData = new EventEmitter<{ message: string; alert: string }>();
 
   findAll(): Observable<ItemDto[]> {
     return this.httpClient.get<ItemDto[]>(

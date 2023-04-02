@@ -3,6 +3,7 @@ import { ActivatedRoute, Data } from "@angular/router";
 import { CartDto } from "src/app/model/CartDto.model";
 import { CustomerDto } from "src/app/model/CustomerDto.model";
 import { CartService } from "src/app/service/Cart.service";
+import { ItemService } from "src/app/service/ItemService.service";
 
 declare var $: any;
 
@@ -14,16 +15,6 @@ declare var $: any;
 export class CartComponent implements OnInit {
   @ViewChild("alertChild", { static: true }) el: ElementRef;
 
-  show() {
-    $(this.el.nativeElement).show();
-    setTimeout(() => {
-      $(this.el.nativeElement).hide();
-    }, 3000);
-  }
-  hide() {
-    $(this.el.nativeElement).hide();
-  }
-
   carts: CartDto = new CartDto(0, new CustomerDto(0, "", "", 1), []);
   totalPrice: number = 2000;
   emptyDetail = false;
@@ -31,7 +22,8 @@ export class CartComponent implements OnInit {
   errorMessage = "";
   constructor(
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private itemService: ItemService
   ) {}
 
   ngOnInit() {
@@ -55,7 +47,9 @@ export class CartComponent implements OnInit {
     // this.ngOnInit();
     cartNew.map((temp) => {
       temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
-      this.cartService.updateCart(temp).subscribe();
+      this.cartService.updateCart(temp).subscribe((data) => {
+        this.ngOnInit();
+      });
     });
   }
   addQuantity(event: { id: number }) {
@@ -67,7 +61,9 @@ export class CartComponent implements OnInit {
     // this.ngOnInit();
     cartNew.map((temp) => {
       temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
-      this.cartService.updateCart(temp).subscribe();
+      this.cartService.updateCart(temp).subscribe((data) => {
+        this.ngOnInit();
+      });
     });
   }
   onDelete(event: { id: number }) {
@@ -84,9 +80,15 @@ export class CartComponent implements OnInit {
   onUpdateCart() {
     this.carts.cartDetailDtos.map((temp) => {
       temp.cartDto = new CartDto(this.carts.id, this.carts.customerDto, null);
-      this.cartService.updateCart(temp).subscribe();
+      this.cartService.updateCart(temp).subscribe(
+        (data) => {
+          this.ngOnInit();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
     });
-    this.ngOnInit();
   }
 
   placeAnOrder() {
@@ -98,6 +100,9 @@ export class CartComponent implements OnInit {
         console.log(err.error.message);
       }
     );
-    this.show();
+    this.itemService.alertData.emit({
+      message: " Đặt hàng thành công !!",
+      alert: "alert-success",
+    });
   }
 }

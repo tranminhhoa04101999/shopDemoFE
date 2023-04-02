@@ -6,7 +6,7 @@
           <div class="col-lg-9 container-col">
             <h6 class="card-title">
               <span style="font-weight: bold">Ngày đặt:</span>
-              {{ item.orderDate }}
+              {{ item.orderDate | date : "dd/MM/yyyy" }}
             </h6>
             <p class="card-text">
               <span style="font-weight: bold">Trạng thái: </span
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-8 shadow-lg bg-white rounded">
+    <div class="col-lg-8 shadow-lg bg-white rounded p-3">
       <div *ngIf="orderDetail.length > 0">
         <div *ngFor="let item2 of orderDetail" class="p-3">
           <div class="row orderCart border-bottom d-flex align-items-center">

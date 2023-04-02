@@ -1,5 +1,11 @@
-<div class="container w-50 container-update shadow-lg bg-white rounded p-4">
-  <form (ngSubmit)="onSubmit()" #form="ngForm">
+<div
+  class="container w-50 container-update shadow-lg bg-white rounded p-4 mt-3"
+>
+  <app-confirm-model
+    [title]="'cập nhật'"
+    (onClickFirm)="onSubmit()"
+  ></app-confirm-model>
+  <form #form="ngForm">
     <div class="form-group">
       <label for="exampleInputEmail1">Id</label>
       <input
@@ -43,7 +49,13 @@
         #price="ngModel"
       />
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">
+    <button
+      type="submit"
+      class="btn btn-outline-danger"
+      [disabled]="!form.form.valid"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
       Cập nhật
     </button>
   </form>

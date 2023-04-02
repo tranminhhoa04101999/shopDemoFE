@@ -13,6 +13,7 @@ export class ItemComponent implements OnInit {
   items: ItemDto[] = [{ id: 0, name: "", price: 0 }];
   Customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
   idDelete = 0;
+  searchInput = "";
 
   constructor(
     private itemService: ItemService,
@@ -20,22 +21,11 @@ export class ItemComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.itemService.findAll().subscribe((data) => (this.items = data));
+    this.itemService.findAll().subscribe((data) => {
+      this.items = data;
+    });
   }
 
-  // onDeleteItem(event: { idItem: number }) {
-  //   this.itemService.delete(event.idItem).subscribe(
-  //     (data) => {
-  //       //xoa o local
-  //       let index = this.items.findIndex((item) => item.id === event.idItem);
-  //       this.items.splice(index, 1);
-  //       //
-  //     },
-  //     (err) => {
-  //       console.log(err.error);
-  //     }
-  //   );
-  // }
   onDeleteItem() {
     this.itemService.delete(this.idDelete).subscribe(
       (data) => {
@@ -51,5 +41,15 @@ export class ItemComponent implements OnInit {
   }
   onGanId(event: { id: number }) {
     this.idDelete = event.id;
+  }
+  onChangeSearch() {
+    if (this.searchInput === "") {
+      this.ngOnInit();
+    } else {
+      let newItems = this.items.filter((item) =>
+        item.name.toLowerCase().includes(this.searchInput.toLowerCase())
+      );
+      this.items = newItems;
+    }
   }
 }

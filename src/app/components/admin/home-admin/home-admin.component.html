@@ -1,36 +1,37 @@
-<div class="container-fluid container_homeAdmin">
-  <div class="row">
+<div
+  class="container-fluid container_homeAdmin vh-100"
+  style="background-color: #f7f7f7"
+>
+  <div class="row vh-100">
     <div class="col-lg-2 border-right container-left">
-      <div class="title">
-        <h5 class="font-weight-bold">Sản phẩm</h5>
+      <!-- test -->
+      <div class="container-dropdow">
+        <div class="btn-dropdown" (click)="toggle()">
+          <i class="bi bi-shop"></i>
+          <span>Sản Phẩm</span>
+          <i class="bi bi-caret-right-fill icon-drop" #icondrop></i>
+        </div>
+        <div class="sub-menu" #submenu>
+          <div class="sub-item" [routerLink]="['/homeAdmin/item']">
+            Danh sách
+          </div>
+          <div class="sub-item" [routerLink]="['/homeAdmin/addItem']">
+            Thêm sản phẩm
+          </div>
+        </div>
       </div>
-      <button
-        class="btn btn-secondary my-2"
-        [routerLink]="['/homeAdmin/item']"
-        routerLinkActive="active"
-      >
-        sản phẩm
-      </button>
-      <button
-        class="btn btn-secondary my-2"
-        [routerLink]="['/homeAdmin/addItem']"
-        routerLinkActive="active"
-      >
-        thêm sản phẩm
-      </button>
-      <div class="title mt-5">
-        <h5 class="font-weight-bold">Đơn hàng</h5>
+
+      <div class="container-dropdow">
+        <div class="btn-dropdown" [routerLink]="['/homeAdmin/order']">
+          <i class="bi bi-shop"></i>
+          <span>Đơn Hàng</span>
+        </div>
       </div>
-      <button
-        class="btn btn-secondary my-2"
-        [routerLink]="['/homeAdmin/order']"
-        routerLinkActive="active"
-      >
-        Đơn hàng
-      </button>
+
+      <!-- test -->
     </div>
 
-    <div class="col-lg-9">
+    <div class="col-lg-10 container-right">
       <router-outlet></router-outlet>
     </div>
   </div>

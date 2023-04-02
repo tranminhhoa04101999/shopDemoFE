@@ -1,3 +1,15 @@
+.wrapper {
+  background-color: var(--background-primary);
+  margin-top: var(--header-mt);
+  height: calc(100vh - var(--header-mt));
+  padding-top: 20px;
+}
+.container-cart {
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: white;
+  padding: 30px 60px;
+}
 .itemInCart {
   height: 160px;
 }
@@ -10,14 +22,11 @@
   max-height: 100px;
   border-radius: 20px;
 }
-.container-cart {
-  margin-top: var(--header-mt);
-  min-width: 80vw;
-  border-radius: 20px;
-  overflow: hidden;
-}
+
 .cart_right {
   background-color: #eae8e8;
+  border-radius: 10px;
+  padding: 10px;
 }
 .total {
 }
@@ -26,11 +35,16 @@
 }
 .btn_order {
   max-width: 200px;
-  margin: 200px auto 0;
+  margin: 150px auto 0;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.btn_order:active {
+  transform: translateY(-4px);
 }
 .container-listItem {
   overflow: auto;
-  max-height: 600px;
+  max-height: 500px;
 }
 /* Số lượng */
 .btn-quantity {
@@ -40,15 +54,31 @@
   border: 1px solid #999;
   display: flex;
   justify-content: center;
+  border-radius: none;
   align-items: center;
 }
-
+.btn-left {
+  border-right: none;
+  border-top-left-radius: 10px;
+}
+.btn-right {
+  border-left: none;
+  border-bottom-right-radius: 10px;
+}
 .input-quantity {
-  outline: none;
   width: 50px;
   height: 32px;
   text-align: center;
+  border: 1px solid #999;
+  border-left: none;
+  border-right: none;
 }
+.input-quantity::-webkit-outer-spin-button,
+.input-quantity::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* End số lượng */
 .empty-cart {
   display: flex;
@@ -59,4 +89,23 @@
 .empty-cart span,
 .empty-cart a {
   font-size: 25px;
+}
+.btn-thanhtoan:active {
+  transform: translateY(-4px);
+}
+
+#cart-scroll::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+#cart-scroll::-webkit-scrollbar {
+  width: 8px;
+  background-color: #f5f5f5;
+}
+#cart-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
 }

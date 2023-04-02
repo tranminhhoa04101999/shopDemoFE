@@ -1,16 +1,5 @@
 <div class="container container-header" style="position: relative">
-  <div
-    #alertChild
-    class="alert alert-success alert-dismissible fade show position-fixed"
-    role="alert"
-    id="alertShow"
-    style="z-index: 5; right: 0; top: 100px; display: none"
-  >
-    <strong>Thêm vào giỏ thành công!</strong>
-    <button (click)="hide()" type="button" class="close" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+  <app-alert></app-alert>
   <h2 class="text-bold mt-2" style="font-family: 'Pacifico', cursive">
     Danh sách sản phẩm
   </h2>
@@ -25,12 +14,14 @@
         <!-- end -->
         <img
           class="card-img-top"
-          src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+          src="https://bizweb.dktcdn.net/100/287/440/files/ao-thun-den-streetwear-nen-mua.png?v=1602830750385"
           alt="Card image cap"
         />
         <div class="card-body p-0">
           <h5 class="card-title pt-3 pl-3">{{ item.name }}</h5>
-          <p class="card-text pl-3">{{ item.price | currency : "VND" }}</p>
+          <p class="card-text pl-3 font-weight-bold">
+            {{ item.price | currency : "VND" }}
+          </p>
           <a
             class="btn btn-item btn-animation"
             (click)="onAddToCart({ id: item.id })"

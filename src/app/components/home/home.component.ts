@@ -16,16 +16,6 @@ export class HomeComponent implements OnInit {
   Customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
   @ViewChild("alertChild", { static: true }) el: ElementRef;
 
-  show() {
-    $(this.el.nativeElement).show();
-    setTimeout(() => {
-      $(this.el.nativeElement).hide();
-    }, 3000);
-  }
-  hide() {
-    $(this.el.nativeElement).hide();
-  }
-
   constructor(
     private itemService: ItemService,
     private cartService: CartService
@@ -59,7 +49,10 @@ export class HomeComponent implements OnInit {
         customerId: this.Customer.id,
       })
       .subscribe((data) => {
-        this.show();
+        this.itemService.alertData.emit({
+          message: "Đã thêm vào giỏ !!",
+          alert: "alert-success",
+        });
       });
   }
 }

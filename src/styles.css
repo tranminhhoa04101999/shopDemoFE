@@ -5,16 +5,10 @@
   font-family: "Roboto", sans-serif;
 }
 :root {
-  --header-mt: 80px;
+  --header-mt: 60px;
   --primary-color: #823905;
   --primary-color-red: #ed4730;
   --white-color: #fff;
   --white-color-header: #e4e6eb;
-  --background-primary: #f9f6f0;
-  --background-primary-2: #fffdfa;
-  --black-color: #000;
-  --text-color: #333;
-  --border-color: #dbdbdb;
-  --star-gold-color: #ffce3e;
-  --btn-color: #956151;
+  --background-primary: #faf8f3;
 }

@@ -38,9 +38,9 @@ export class OrderDetailComponent implements OnInit {
     });
   }
 
-  onChangeStatus(event: { order: OrderDto }) {
-    event.order.status = 1;
-    this.orderService.updateOrder(event.order).subscribe(
+  onChangeStatus() {
+    this.order.status = 1;
+    this.orderService.updateOrder(this.order).subscribe(
       (data) => {
         this.order = data;
       },

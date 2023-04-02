@@ -20,6 +20,7 @@ export class OrdersComponent implements OnInit {
   ngOnInit() {
     this.orderService.findByCustomerId(this.customer.id).subscribe((data) => {
       this.orders = data;
+      console.log(data);
     });
   }
 

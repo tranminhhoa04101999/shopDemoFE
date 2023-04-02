@@ -10,3 +10,13 @@
   justify-content: center;
   align-items: center;
 }
+.header {
+  background-color: white;
+  height: 70px;
+  width: 100%;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  margin: 10px 0;
+}

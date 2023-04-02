@@ -1,25 +1,31 @@
 <div
-  class="container w-100 h-100 shadow-lg p-3 mb-5 bg-white rounded"
+  class="container shadow-lg p-5 mt-3 bg-white rounded"
   *ngIf="orderDetails.length > 0"
 >
-  <div class="row h-25 border-bottom m-2 header">
+  <app-confirm-model
+    [title]="'xác nhận đơn hàng'"
+    (onClickFirm)="onChangeStatus()"
+  ></app-confirm-model>
+  <div class="row h-25 pb-2 border-bottom m-2 header">
     <div>
       Người đặt:
       <span>{{ order.customerDto.username }}</span>
     </div>
     <div class="ml-5">
-      Ngày đặt: <span>{{ order.orderDate }}</span>
+      Ngày đặt: <span>{{ order.orderDate | date : "dd/MM/yyyy" }}</span>
     </div>
     <div class="ml-5">
       Tổng tiền: <span>{{ totalPrice | currency : "VND" }}</span>
     </div>
-    <div class="" style="margin-left: 200px">
+    <div class="" style="margin-left: 100px">
       Trạng thái:
       <span>{{ order.status === 0 ? "Pending" : "Done" }}</span>
     </div>
     <button
-      class="btn btn-primary ml-5"
-      (click)="onChangeStatus({ order: order })"
+      *ngIf="order.status === 0"
+      class="btn btn-outline-danger ml-5"
+      data-toggle="modal"
+      data-target="#exampleModal"
     >
       Xác nhận
     </button>
@@ -29,7 +35,7 @@
       <div class="row orderCart border-bottom d-flex align-items-center">
         <div class="col-2">
           <img
-            src="https://phutungnhapkhauchinhhang.com/wp-content/uploads/2020/06/default-thumbnail.jpg"
+            src="https://bizweb.dktcdn.net/100/287/440/files/ao-thun-den-streetwear-nen-mua.png?v=1602830750385"
             alt="dongho"
             class="img_orderdetail"
           />

@@ -24,6 +24,8 @@ import { AddItemComponent } from "./components/admin/add-item/add-item.component
 import { UpdateItemComponent } from "./components/admin/update-item/update-item.component";
 import { OrderComponent } from "./components/admin/order/order.component";
 import { OrderDetailComponent } from "./components/admin/order-detail/order-detail.component";
+import { ConfirmModelComponent } from './components/base/confirm-model/confirm-model.component';
+import { AlertComponent } from './components/base/alert/alert.component';
 
 const appRoutes: Routes = [
   { path: "", component: HomeComponent },
@@ -62,6 +64,8 @@ const appRoutes: Routes = [
     UpdateItemComponent,
     OrderComponent,
     OrderDetailComponent,
+    ConfirmModelComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule,

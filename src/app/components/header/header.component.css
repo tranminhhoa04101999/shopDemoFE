@@ -4,6 +4,9 @@
   width: 100%;
   top: 0;
 }
+.navbar {
+  height: var(--header-mt);
+}
 .btn-animation:hover {
   animation-name: test;
   animation-duration: 0.2s;

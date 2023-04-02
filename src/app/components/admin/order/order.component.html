@@ -1,19 +1,22 @@
-<div>
-  <div class="pb-2 d-flex align-item-center">
-    <input
-      type="checkbox"
-      [(ngModel)]="filterPending"
-      (click)="onCheckbx($event)"
-    />
-    <span class="ml-1">Đang đợi</span>
+<div style="width: 100%">
+  <div class="header">
+    <div class="d-flex align-item-center">
+      <input
+        type="checkbox"
+        [(ngModel)]="filterPending"
+        (click)="onCheckbx($event)"
+      />
+      <span class="ml-1">Đang đợi</span>
+    </div>
   </div>
+
   <div class="row">
     <div class="col-lg-4" *ngFor="let order of orders">
       <div class="card mb-3">
         <div class="row p-2 container-row">
           <div class="col-8">
             <div>Người đặt: {{ order.customerDto.username }}</div>
-            <div>Ngày đặt: {{ order.orderDate }}</div>
+            <div>Ngày đặt: {{ order.orderDate | date : "dd/MM/yyyy" }}</div>
           </div>
           <div class="col-2">
             <div
