@@ -92,17 +92,31 @@ export class CartComponent implements OnInit {
   }
 
   placeAnOrder() {
+    // bất lỗi số lượng nhỏ hơn 1
+    if (this.carts.cartDetailDtos.length > 0) {
+      for (let i = 0; i < this.carts.cartDetailDtos.length; i++) {
+        const element = this.carts.cartDetailDtos[i];
+        if (element.quantity < 1) {
+          this.itemService.alertData.emit({
+            message: "Số lượng không được nhỏ hơn 1 !!",
+            alert: "alert-danger",
+          });
+          return;
+        }
+      }
+    }
+    //end
     this.cartService.placeAnOrder(this.carts).subscribe(
       (data) => {
         this.carts = new CartDto(0, new CustomerDto(0, "", "", 1), []);
+        this.itemService.alertData.emit({
+          message: " Đặt hàng thành công !!",
+          alert: "alert-success",
+        });
       },
       (err) => {
         console.log(err.error.message);
       }
     );
-    this.itemService.alertData.emit({
-      message: " Đặt hàng thành công !!",
-      alert: "alert-success",
-    });
   }
 }

@@ -38,5 +38,6 @@ export class HeaderComponent implements OnInit {
 
   onSearch() {
     this.itemService.setSearchInput(this.searchInput);
+    this.router.navigate(["/"]);
   }
 }
