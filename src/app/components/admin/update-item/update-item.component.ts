@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { ItemDto } from "src/app/model/ItemDto.model";
-import { ItemService } from "src/app/service/ItemService.service";
-import { ConfirmModelComponent } from "../../base/confirm-model/confirm-model.component";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ItemDto } from 'src/app/model/ItemDto.model';
+import { ItemService } from 'src/app/service/ItemService.service';
+import { ConfirmModelComponent } from '../../base/confirm-model/confirm-model.component';
 
 @Component({
-  selector: "app-update-item",
-  templateUrl: "./update-item.component.html",
-  styleUrls: ["./update-item.component.css"],
+  selector: 'app-update-item',
+  templateUrl: './update-item.component.html',
+  styleUrls: ['./update-item.component.css'],
 })
 export class UpdateItemComponent implements OnInit {
-  item: ItemDto = new ItemDto(0, "", 0);
+  item: ItemDto = new ItemDto(0, '', 0);
   constructor(
     private route: ActivatedRoute,
     private itemService: ItemService,
@@ -19,7 +19,7 @@ export class UpdateItemComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((param) => {
-      this.itemService.findById(param["id"]).subscribe(
+      this.itemService.findById(param['id']).subscribe(
         (data) => {
           this.item = data;
         },
@@ -42,6 +42,6 @@ export class UpdateItemComponent implements OnInit {
     );
   }
   ontest() {
-    console.log("ecec");
+    console.log('ecec');
   }
 }

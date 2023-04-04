@@ -1,4 +1,4 @@
-import { CustomerDto } from "./CustomerDto.model";
+import { CustomerDto } from './CustomerDto.model';
 
 export class OrderDto {
   constructor(

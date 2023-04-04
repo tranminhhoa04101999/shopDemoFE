@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
-import { CustomerDto } from "src/app/model/CustomerDto.model";
-import { OrderDto } from "src/app/model/OrderDto.model";
-import { OrderService } from "src/app/service/Order.service";
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CustomerDto } from 'src/app/model/CustomerDto.model';
+import { OrderDto } from 'src/app/model/OrderDto.model';
+import { OrderService } from 'src/app/service/Order.service';
 
 @Component({
-  selector: "app-order",
-  templateUrl: "./order.component.html",
-  styleUrls: ["./order.component.css"],
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css'],
 })
 export class OrderComponent implements OnInit {
   orders: OrderDto[] = [
@@ -16,8 +16,8 @@ export class OrderComponent implements OnInit {
       0,
       {
         id: 0,
-        username: "",
-        password: "",
+        username: '',
+        password: '',
         type: 0,
       },
       new Date()
@@ -37,7 +37,7 @@ export class OrderComponent implements OnInit {
   }
 
   onUpdate(event: { id: number }) {
-    this.router.navigate(["/homeAdmin/order", event.id]);
+    this.router.navigate(['/homeAdmin/order', event.id]);
   }
   onCheckbx(event: any) {
     if (event.target.checked) {

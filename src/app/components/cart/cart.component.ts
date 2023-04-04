@@ -1,25 +1,25 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { ActivatedRoute, Data } from "@angular/router";
-import { CartDto } from "src/app/model/CartDto.model";
-import { CustomerDto } from "src/app/model/CustomerDto.model";
-import { CartService } from "src/app/service/Cart.service";
-import { ItemService } from "src/app/service/ItemService.service";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Data } from '@angular/router';
+import { CartDto } from 'src/app/model/CartDto.model';
+import { CustomerDto } from 'src/app/model/CustomerDto.model';
+import { CartService } from 'src/app/service/Cart.service';
+import { ItemService } from 'src/app/service/ItemService.service';
 
 declare var $: any;
 
 @Component({
-  selector: "app-cart",
-  templateUrl: "./cart.component.html",
-  styleUrls: ["./cart.component.css"],
+  selector: 'app-cart',
+  templateUrl: './cart.component.html',
+  styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  @ViewChild("alertChild", { static: true }) el: ElementRef;
+  @ViewChild('alertChild', { static: true }) el: ElementRef;
 
-  carts: CartDto = new CartDto(0, new CustomerDto(0, "", "", 1), []);
+  carts: CartDto = new CartDto(0, new CustomerDto(0, '', '', 1), []);
   totalPrice: number = 2000;
   emptyDetail = false;
   arr = [];
-  errorMessage = "";
+  errorMessage = '';
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.route.data.subscribe((data: Data) => {
-      this.carts = data["carts"];
+      this.carts = data['carts'];
 
       this.totalPrice = data.carts.cartDetailDtos.reduce((prev, current) => {
         return prev + current.itemDto.price * current.quantity;
@@ -98,8 +98,8 @@ export class CartComponent implements OnInit {
         const element = this.carts.cartDetailDtos[i];
         if (element.quantity < 1) {
           this.itemService.alertData.emit({
-            message: "Số lượng không được nhỏ hơn 1 !!",
-            alert: "alert-danger",
+            message: 'Số lượng không được nhỏ hơn 1 !!',
+            alert: 'alert-danger',
           });
           return;
         }
@@ -108,10 +108,10 @@ export class CartComponent implements OnInit {
     //end
     this.cartService.placeAnOrder(this.carts).subscribe(
       (data) => {
-        this.carts = new CartDto(0, new CustomerDto(0, "", "", 1), []);
+        this.carts = new CartDto(0, new CustomerDto(0, '', '', 1), []);
         this.itemService.alertData.emit({
-          message: " Đặt hàng thành công !!",
-          alert: "alert-success",
+          message: ' Đặt hàng thành công !!',
+          alert: 'alert-success',
         });
       },
       (err) => {

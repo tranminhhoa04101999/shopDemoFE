@@ -1,15 +1,15 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { EventEmitter, Injectable } from "@angular/core";
-import { Observable, ReplaySubject, Subject } from "rxjs";
-import { ItemDto } from "../model/ItemDto.model";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EventEmitter, Injectable } from '@angular/core';
+import { Observable, ReplaySubject, Subject } from 'rxjs';
+import { ItemDto } from '../model/ItemDto.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "Application/json",
+    'Content-Type': 'Application/json',
   }),
 };
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class ItemService {
   constructor(private httpClient: HttpClient) {}
 
@@ -18,14 +18,14 @@ export class ItemService {
 
   findAll(): Observable<ItemDto[]> {
     return this.httpClient.get<ItemDto[]>(
-      "http://localhost:8080/api/items",
+      'http://localhost:8080/api/items',
       httpOptions
     );
   }
 
   save(item: ItemDto): Observable<ItemDto> {
     return this.httpClient
-      .post<ItemDto>("http://localhost:8080/api/items", item, httpOptions)
+      .post<ItemDto>('http://localhost:8080/api/items', item, httpOptions)
       .pipe();
   }
 
@@ -43,7 +43,7 @@ export class ItemService {
 
   update(item: ItemDto): Observable<ItemDto> {
     return this.httpClient
-      .put<ItemDto>("http://localhost:8080/api/items", item, httpOptions)
+      .put<ItemDto>('http://localhost:8080/api/items', item, httpOptions)
       .pipe();
   }
 

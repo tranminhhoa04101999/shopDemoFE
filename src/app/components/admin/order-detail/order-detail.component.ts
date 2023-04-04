@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
-import { OrderDetailDto } from "src/app/model/OrderDetailDto.model";
-import { OrderDto } from "src/app/model/OrderDto.model";
-import { OrderService } from "src/app/service/Order.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { OrderDetailDto } from 'src/app/model/OrderDetailDto.model';
+import { OrderDto } from 'src/app/model/OrderDto.model';
+import { OrderService } from 'src/app/service/Order.service';
 
 @Component({
-  selector: "app-order-detail",
-  templateUrl: "./order-detail.component.html",
-  styleUrls: ["./order-detail.component.css"],
+  selector: 'app-order-detail',
+  templateUrl: './order-detail.component.html',
+  styleUrls: ['./order-detail.component.css'],
 })
 export class OrderDetailComponent implements OnInit {
   orderDetails: OrderDetailDto[] = [];
@@ -21,7 +21,7 @@ export class OrderDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.orderService.findOrderDetailByOrderId(params["id"]).subscribe(
+      this.orderService.findOrderDetailByOrderId(params['id']).subscribe(
         (data) => {
           // console.log(data);
           this.orderDetails = data;

@@ -1,12 +1,12 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { OrderDetailDto } from "../model/OrderDetailDto.model";
-import { OrderDto } from "../model/OrderDto.model";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { OrderDetailDto } from '../model/OrderDetailDto.model';
+import { OrderDto } from '../model/OrderDto.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "Application/json",
+    'Content-Type': 'Application/json',
   }),
 };
 
@@ -31,13 +31,13 @@ export class OrderService {
 
   findAll(): Observable<OrderDto[]> {
     return this.httpClient
-      .get<OrderDto[]>("http://localhost:8080/api/orders", httpOptions)
+      .get<OrderDto[]>('http://localhost:8080/api/orders', httpOptions)
       .pipe();
   }
 
   updateOrder(order: OrderDto): Observable<OrderDto> {
     return this.httpClient
-      .put<OrderDto>("http://localhost:8080/api/orders", order, httpOptions)
+      .put<OrderDto>('http://localhost:8080/api/orders', order, httpOptions)
       .pipe();
   }
 }

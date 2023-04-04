@@ -1,5 +1,5 @@
-import { CartDto } from "./CartDto.model";
-import { ItemDto } from "./ItemDto.model";
+import { CartDto } from './CartDto.model';
+import { ItemDto } from './ItemDto.model';
 
 export class CartDetailDto {
   public constructor(

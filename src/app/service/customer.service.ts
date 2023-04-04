@@ -1,23 +1,23 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, ReplaySubject, Subject } from "rxjs";
-import { CustomerDto } from "../model/CustomerDto.model";
-import { Router } from "@angular/router";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from 'rxjs';
+import { CustomerDto } from '../model/CustomerDto.model';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class CustomerService {
   constructor(private httpClient: HttpClient, private router: Router) {}
-  token: string = JSON.parse(localStorage.getItem("token"));
-  customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
+  token: string = JSON.parse(localStorage.getItem('token'));
+  customer: CustomerDto = JSON.parse(localStorage.getItem('inforUsers'));
 
   private loggedIn: Subject<string> = new ReplaySubject<string>();
   private type: Subject<number> = new ReplaySubject<number>();
 
   login(customer: CustomerDto): Observable<string> {
-    return this.httpClient.post("http://localhost:8080/api/login", customer, {
-      responseType: "text",
+    return this.httpClient.post('http://localhost:8080/api/login', customer, {
+      responseType: 'text',
     });
   }
 
@@ -25,7 +25,7 @@ export class CustomerService {
     return this.httpClient
       .get<CustomerDto>(`http://localhost:8080/api/customers/${id}`, {
         headers: new HttpHeaders({
-          "Content-Type": "Application/json",
+          'Content-Type': 'Application/json',
         }),
       })
       .pipe();
@@ -37,7 +37,7 @@ export class CustomerService {
         `http://localhost:8080/api/customers/username/${username}`,
         {
           headers: new HttpHeaders({
-            "Content-Type": "Application/json",
+            'Content-Type': 'Application/json',
           }),
         }
       )
@@ -46,9 +46,9 @@ export class CustomerService {
 
   save(customer: CustomerDto): Observable<CustomerDto> {
     return this.httpClient
-      .post<CustomerDto>("http://localhost:8080/api/customers", customer, {
+      .post<CustomerDto>('http://localhost:8080/api/customers', customer, {
         headers: new HttpHeaders({
-          "Content-Type": "Application/json",
+          'Content-Type': 'Application/json',
         }),
       })
       .pipe();
@@ -63,17 +63,17 @@ export class CustomerService {
 
   logginLogin() {
     setTimeout(() => {
-      let customer = JSON.parse(localStorage.getItem("inforUsers"));
+      let customer = JSON.parse(localStorage.getItem('inforUsers'));
       this.type.next(customer.type);
     }, 100);
-    this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
+    this.loggedIn.next(JSON.parse(localStorage.getItem('token')));
   }
   logginLogout() {
-    localStorage.removeItem("inforUsers");
-    localStorage.removeItem("token");
-    localStorage.removeItem("userType");
-    this.loggedIn.next(JSON.parse(localStorage.getItem("token")));
+    localStorage.removeItem('inforUsers');
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.loggedIn.next(JSON.parse(localStorage.getItem('token')));
     this.type.next(null);
-    this.router.navigate(["login"]);
+    this.router.navigate(['login']);
   }
 }

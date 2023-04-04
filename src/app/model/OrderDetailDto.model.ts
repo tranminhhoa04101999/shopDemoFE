@@ -1,5 +1,5 @@
-import { ItemDto } from "./ItemDto.model";
-import { OrderDto } from "./OrderDto.model";
+import { ItemDto } from './ItemDto.model';
+import { OrderDto } from './OrderDto.model';
 
 export class OrderDetailDto {
   constructor(

@@ -1,16 +1,16 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { CartDetailDto } from "../model/CartDetailDto.model";
-import { CartDto } from "../model/CartDto.model";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { CartDetailDto } from '../model/CartDetailDto.model';
+import { CartDto } from '../model/CartDto.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    "Content-Type": "Application/json",
+    'Content-Type': 'Application/json',
   }),
 };
 
-@Injectable({ providedIn: "root" })
+@Injectable({ providedIn: 'root' })
 export class CartService {
   constructor(private httpClient: HttpClient) {}
 
@@ -33,14 +33,14 @@ export class CartService {
     customerId: number;
   }): Observable<any> {
     return this.httpClient
-      .post("http://localhost:8080/api/carts", model, httpOptions)
+      .post('http://localhost:8080/api/carts', model, httpOptions)
       .pipe();
   }
 
   updateCart(cartDetail: CartDetailDto): Observable<CartDetailDto> {
     return this.httpClient
       .put<CartDetailDto>(
-        "http://localhost:8080/api/carts",
+        'http://localhost:8080/api/carts',
         cartDetail,
         httpOptions
       )
@@ -48,7 +48,7 @@ export class CartService {
   }
   placeAnOrder(cartDto: CartDto): Observable<any> {
     return this.httpClient
-      .post<any>("http://localhost:8080/api/orders", cartDto, httpOptions)
+      .post<any>('http://localhost:8080/api/orders', cartDto, httpOptions)
       .pipe();
   }
 }

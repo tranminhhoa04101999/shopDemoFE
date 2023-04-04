@@ -1,32 +1,32 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { ItemDto } from "src/app/model/ItemDto.model";
-import { ItemService } from "src/app/service/ItemService.service";
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ItemDto } from 'src/app/model/ItemDto.model';
+import { ItemService } from 'src/app/service/ItemService.service';
 
 declare var $: any;
 
 @Component({
-  selector: "app-add-item",
-  templateUrl: "./add-item.component.html",
-  styleUrls: ["./add-item.component.css"],
+  selector: 'app-add-item',
+  templateUrl: './add-item.component.html',
+  styleUrls: ['./add-item.component.css'],
 })
 export class AddItemComponent implements OnInit {
-  item: ItemDto = new ItemDto(0, "", 0);
+  item: ItemDto = new ItemDto(0, '', 0);
   constructor(private itemService: ItemService) {}
 
   ngOnInit() {}
 
   onSubmit() {
-    if (this.item.name.trim() === "") {
+    if (this.item.name.trim() === '') {
       this.itemService.alertData.emit({
-        message: "Tên không được trống.",
-        alert: "alert-warning",
+        message: 'Tên không được trống.',
+        alert: 'alert-warning',
       });
       return;
     }
     if (this.item.price < 1000) {
       this.itemService.alertData.emit({
-        message: "Giá không được nhỏ hơn 1000",
-        alert: "alert-warning",
+        message: 'Giá không được nhỏ hơn 1000',
+        alert: 'alert-warning',
       });
       return;
     }
@@ -34,10 +34,10 @@ export class AddItemComponent implements OnInit {
 
     this.itemService.save(this.item).subscribe(
       (data) => {
-        this.item = new ItemDto(0, "", 0);
+        this.item = new ItemDto(0, '', 0);
         this.itemService.alertData.emit({
-          message: "Thêm sản phẩm thành công !!",
-          alert: "alert-success",
+          message: 'Thêm sản phẩm thành công !!',
+          alert: 'alert-success',
         });
       },
       (err) => {

@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { CustomerDto } from "src/app/model/CustomerDto.model";
-import { OrderDetailDto } from "src/app/model/OrderDetailDto.model";
-import { OrderDto } from "src/app/model/OrderDto.model";
-import { OrderService } from "src/app/service/Order.service";
+import { Component, OnInit } from '@angular/core';
+import { CustomerDto } from 'src/app/model/CustomerDto.model';
+import { OrderDetailDto } from 'src/app/model/OrderDetailDto.model';
+import { OrderDto } from 'src/app/model/OrderDto.model';
+import { OrderService } from 'src/app/service/Order.service';
 
 @Component({
-  selector: "app-orders",
-  templateUrl: "./orders.component.html",
-  styleUrls: ["./orders.component.css"],
+  selector: 'app-orders',
+  templateUrl: './orders.component.html',
+  styleUrls: ['./orders.component.css'],
 })
 export class OrdersComponent implements OnInit {
   constructor(private orderService: OrderService) {}
@@ -15,7 +15,7 @@ export class OrdersComponent implements OnInit {
   orders: OrderDto[] = [];
   orderDetail: OrderDetailDto[] = [];
   totalOrderDetail: number = 0;
-  customer: CustomerDto = JSON.parse(localStorage.getItem("inforUsers"));
+  customer: CustomerDto = JSON.parse(localStorage.getItem('inforUsers'));
 
   ngOnInit() {
     this.orderService.findByCustomerId(this.customer.id).subscribe((data) => {
