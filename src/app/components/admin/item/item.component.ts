@@ -3,6 +3,7 @@ import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { ItemDto } from 'src/app/model/ItemDto.model';
 import { CartService } from 'src/app/service/Cart.service';
 import { ItemService } from 'src/app/service/ItemService.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item',
@@ -17,7 +18,8 @@ export class ItemComponent implements OnInit {
 
   constructor(
     private itemService: ItemService,
-    private cartService: CartService
+    private cartService: CartService,
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {

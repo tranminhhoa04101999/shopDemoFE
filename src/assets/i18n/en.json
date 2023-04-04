@@ -1,0 +1,75 @@
+{
+  "Home": {
+    "title": "Home",
+    "searchPlaceholder": "Search products...",
+    "btnLogin": "Log In",
+    "btnLogout": "Log Out",
+    "titleAllItem": "List of products",
+    "btnAddToCart": "Add to Cart"
+  },
+  "Cart": {
+    "headerL": "Shopping Cart",
+    "headerR": "Checkout",
+    "total": "Total",
+    "btnOrder": "Order",
+    "empty": "Your cart is empty,",
+    "emptyTagA": "go place an order!"
+  },
+  "Order": {
+    "total": "Total",
+    "date": "Order Date",
+    "status": "Status"
+  },
+  "Login": {
+    "username": "Username",
+    "pass": "Password",
+    "phUsername": "Enter username",
+    "phPass": "Enter password",
+    "emptyUsername": "Username cannot be empty",
+    "emptyPass": "Password cannot be empty",
+    "noAccount": "Don't have an account?",
+    "register": "Register here",
+    "btn": "Login"
+  },
+  "Register": {
+    "login": "Log In",
+    "register": "Register"
+  },
+  "HomeAdmin": {
+    "product": "Products",
+    "listProduct": "List",
+    "addProduct": "Add Product",
+    "order": "Orders"
+  },
+  "Item": {
+    "phSearch": "Search products",
+    "btnEdit": "Edit",
+    "btnDelete": "Delete"
+  },
+  "AddItem": {
+    "name": "Product Name",
+    "price": "Price",
+    "btn": "Add Product",
+    "emptyName": "Product name cannot be empty",
+    "phName": "Enter name product"
+  },
+  "OrderAdmin": {
+    "filter": "Pending",
+    "person": "Customer",
+    "date": "Order Date"
+  },
+  "OrderDetailsAdmin": {
+    "person": "Customer",
+    "date": "Order Date",
+    "total": "Total",
+    "status": "Status",
+    "btn": "Confirm"
+  },
+  "updateItem": {
+    "id": "Product ID",
+    "name": "Product Name",
+    "price": "Price",
+    "emptyName": "Product name cannot be empty",
+    "btn": "Update"
+  }
+}

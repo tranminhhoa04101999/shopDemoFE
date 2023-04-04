@@ -8,15 +8,15 @@
       <div class="container-dropdow">
         <div class="btn-dropdown" (click)="toggle()">
           <i class="bi bi-shop"></i>
-          <span>Sản Phẩm</span>
+          <span>{{ 'HomeAdmin.' + 'product' | translate }}</span>
           <i class="bi bi-caret-right-fill icon-drop" #icondrop></i>
         </div>
         <div class="sub-menu" #submenu>
           <div class="sub-item" [routerLink]="['/homeAdmin/item']">
-            Danh sách
+            {{ 'HomeAdmin.' + 'listProduct' | translate }}
           </div>
           <div class="sub-item" [routerLink]="['/homeAdmin/addItem']">
-            Thêm sản phẩm
+            {{ 'HomeAdmin.' + 'addProduct' | translate }}
           </div>
         </div>
       </div>
@@ -24,7 +24,7 @@
       <div class="container-dropdow">
         <div class="btn-dropdown" [routerLink]="['/homeAdmin/order']">
           <i class="bi bi-shop"></i>
-          <span>Đơn Hàng</span>
+          <span>{{ 'HomeAdmin.' + 'order' | translate }}</span>
         </div>
       </div>
 

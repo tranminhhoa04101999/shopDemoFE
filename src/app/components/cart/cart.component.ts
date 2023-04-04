@@ -4,6 +4,7 @@ import { CartDto } from 'src/app/model/CartDto.model';
 import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { CartService } from 'src/app/service/Cart.service';
 import { ItemService } from 'src/app/service/ItemService.service';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class CartComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
-    private itemService: ItemService
+    private itemService: ItemService,
+    public translateService: TranslateService
   ) {}
 
   ngOnInit() {

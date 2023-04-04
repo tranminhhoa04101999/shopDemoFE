@@ -8,18 +8,20 @@
   ></app-confirm-model>
   <div class="row h-25 pb-2 border-bottom m-2 header">
     <div>
-      Người đặt:
+      {{ 'OrderDetailsAdmin.' + 'person' | translate }}:
       <span>{{ order.customerDto.username }}</span>
     </div>
     <div class="ml-5">
-      Ngày đặt: <span>{{ order.orderDate | date : "dd/MM/yyyy" }}</span>
+      {{ 'OrderDetailsAdmin.' + 'date' | translate }}:
+      <span>{{ order.orderDate | date : 'dd/MM/yyyy' }}</span>
     </div>
     <div class="ml-5">
-      Tổng tiền: <span>{{ totalPrice | currency : "VND" }}</span>
+      {{ 'OrderDetailsAdmin.' + 'total' | translate }}:
+      <span>{{ totalPrice | currency : 'VND' }}</span>
     </div>
     <div class="" style="margin-left: 100px">
-      Trạng thái:
-      <span>{{ order.status === 0 ? "Pending" : "Done" }}</span>
+      {{ 'OrderDetailsAdmin.' + 'status' | translate }}:
+      <span>{{ order.status === 0 ? 'Pending' : 'Done' }}</span>
     </div>
     <button
       *ngIf="order.status === 0"
@@ -27,7 +29,7 @@
       data-toggle="modal"
       data-target="#exampleModal"
     >
-      Xác nhận
+      {{ 'OrderDetailsAdmin.' + 'btn' | translate }}
     </button>
   </div>
   <div class="row">
@@ -45,7 +47,7 @@
         </div>
 
         <div class="col-4">
-          <span>{{ orderDetail.itemDto.price | currency : "VND" }}</span>
+          <span>{{ orderDetail.itemDto.price | currency : 'VND' }}</span>
         </div>
         <div class="col-2">x{{ orderDetail.quantity }}</div>
       </div>

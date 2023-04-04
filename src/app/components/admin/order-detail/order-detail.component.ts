@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { OrderDetailDto } from 'src/app/model/OrderDetailDto.model';
 import { OrderDto } from 'src/app/model/OrderDto.model';
 import { OrderService } from 'src/app/service/Order.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-detail',
@@ -16,7 +17,8 @@ export class OrderDetailComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {

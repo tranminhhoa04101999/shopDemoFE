@@ -20,12 +20,12 @@
       <div class="row mt-5">
         <div class="col-12">
           <div class="form-group">
-            <label for="usr">Tài khoản:</label>
+            <label for="usr">{{ 'Login.' + 'username' | translate }}:</label>
             <input
               type="text"
               class="form-control"
               name="username"
-              placeholder="Nhập tài khoản"
+              [placeholder]="'Login.' + 'phUsername' | translate"
               required
               [(ngModel)]="customer.username"
               #username="ngModel"
@@ -34,7 +34,7 @@
               [hidden]="username.valid || username.pristine"
               class="text-danger"
             >
-              vui lòng nhập tài khoản!
+              {{ 'Login.' + 'emptyUsername' | translate }}
             </div>
           </div>
         </div>
@@ -42,12 +42,12 @@
       <div class="row d-flex justify-content-center">
         <div class="col-12">
           <div class="form-group">
-            <label for="pass">Mật khẩu:</label>
+            <label for="pass">{{ 'Login.' + 'pass' | translate }}:</label>
             <input
               type="password"
               name="password"
               class="form-control"
-              placeholder="Nhập mật khẩu"
+              [placeholder]="'Login.' + 'phPass' | translate"
               [(ngModel)]="customer.password"
               required
               #password="ngModel"
@@ -56,7 +56,7 @@
               [hidden]="password.valid || password.pristine"
               class="text-danger"
             >
-              mật khẩu không được trống
+              {{ 'Login.' + 'emptyPass' | translate }}
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@
           <input
             class="btn btn-primary btn-block mb-4"
             type="submit"
-            value="Đăng ký"
+            [value]="'Register.' + 'register' | translate"
             [disabled]="!registerForm.form.valid"
           />
         </div>
@@ -74,8 +74,10 @@
       <div class="row d-flex justify-content-center">
         <div class="col-5 text-center">
           <p>
-            <a [routerLink]="['/login']" routerLinkActive="router-link-active"
-              >Đăng nhập</a
+            <a
+              [routerLink]="['/login']"
+              routerLinkActive="router-link-active"
+              >{{ 'Register.' + 'login' | translate }}</a
             >
           </p>
         </div>

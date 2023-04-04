@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { CustomerService } from 'src/app/service/customer.service';
-
+import { TranslateService } from '@ngx-translate/core';
 declare var $: any;
 
 @Component({
@@ -21,7 +21,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private customerService: CustomerService,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {}

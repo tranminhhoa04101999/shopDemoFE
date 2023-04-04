@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ItemDto } from 'src/app/model/ItemDto.model';
 import { ItemService } from 'src/app/service/ItemService.service';
-import { ConfirmModelComponent } from '../../base/confirm-model/confirm-model.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-update-item',
@@ -14,7 +14,8 @@ export class UpdateItemComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private itemService: ItemService,
-    private router: Router
+    private router: Router,
+    public translate: TranslateService
   ) {}
 
   ngOnInit() {

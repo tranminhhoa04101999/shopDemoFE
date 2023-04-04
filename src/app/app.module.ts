@@ -10,7 +10,11 @@ import { HomeComponent } from './components/home/home.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CustomerService } from './service/customer.service';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HTTP_INTERCEPTORS,
+  HttpClient,
+} from '@angular/common/http';
 import { CartService } from './service/Cart.service';
 import { ItemService } from './service/ItemService.service';
 import { CartResolver } from './resolver/Cart-resolver.service';
@@ -26,6 +30,9 @@ import { OrderComponent } from './components/admin/order/order.component';
 import { OrderDetailComponent } from './components/admin/order-detail/order-detail.component';
 import { ConfirmModelComponent } from './components/base/confirm-model/confirm-model.component';
 import { AlertComponent } from './components/base/alert/alert.component';
+
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -72,6 +79,14 @@ const appRoutes: Routes = [
     FormsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient],
+      },
+      defaultLanguage: 'en',
+    }),
   ],
   providers: [
     CustomerService,
@@ -84,3 +99,6 @@ const appRoutes: Routes = [
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

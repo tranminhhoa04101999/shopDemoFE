@@ -22,7 +22,8 @@
               class="nav-link"
               [routerLink]="['/']"
               routerLinkActive="active"
-              >Trang Chủ <span class="sr-only">(current)</span></a
+              >{{ 'Home.' + 'title' | translate }}
+              <span class="sr-only">(current)</span></a
             >
           </li>
         </ul>
@@ -32,7 +33,7 @@
               class="form-control mr-sm-2"
               type="search"
               name="searchInput"
-              placeholder="Search"
+              [placeholder]="'Home.' + 'searchPlaceholder' | translate"
               aria-label="Search"
               [(ngModel)]="searchInput"
             />
@@ -76,7 +77,8 @@
               style="color: var(--primary-color-red)"
               (click)="onLogout()"
             >
-              Đăng xuất <i class="bi bi-power"></i>
+              {{ 'Home.' + 'btnLogout' | translate }}
+              <i class="bi bi-power"></i>
             </button>
           </div>
         </div>
@@ -87,7 +89,7 @@
             [routerLink]="['/login']"
             routerLinkActive="active"
           >
-            Đăng nhập
+            {{ 'Home.' + 'btnLogin' | translate }}
           </button>
         </ng-template>
       </div>

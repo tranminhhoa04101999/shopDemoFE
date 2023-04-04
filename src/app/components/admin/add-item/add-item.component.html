@@ -2,7 +2,9 @@
   <app-alert></app-alert>
   <form (ngSubmit)="onSubmit()" #form="ngForm">
     <div class="form-group">
-      <label for="exampleInputEmail1">Tên sản phẩm</label>
+      <label for="exampleInputEmail1">
+        {{ 'AddItem.' + 'name' | translate }}
+      </label>
       <input
         type="text"
         class="form-control"
@@ -10,15 +12,15 @@
         required
         name="name"
         [(ngModel)]="item.name"
-        placeholder="nhập tên sản phẩm"
+        [placeholder]="'AddItem.' + 'phName' | translate"
         #name="ngModel"
       />
     </div>
     <div [hidden]="name.valid || name.pristine" class="text-danger">
-      tài khoản không được trống
+      {{ 'AddItem.' + 'emptyName' | translate }}
     </div>
     <div class="form-group">
-      <label for="price">Giá</label>
+      <label for="price">{{ 'AddItem.' + 'price' | translate }}</label>
       <input
         type="number"
         class="form-control"
@@ -33,7 +35,7 @@
       />
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!form.form.valid">
-      Thêm Item
+      {{ 'AddItem.' + 'btn' | translate }}
     </button>
   </form>
 </div>

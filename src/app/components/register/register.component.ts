@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { CustomerService } from 'src/app/service/customer.service';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 
@@ -26,7 +27,10 @@ export class RegisterComponent implements OnInit {
     $(this.el.nativeElement).removeClass('alert-warning');
     $(this.el.nativeElement).hide();
   }
-  constructor(private customerService: CustomerService) {}
+  constructor(
+    private customerService: CustomerService,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit() {}
 

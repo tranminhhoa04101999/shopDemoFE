@@ -1,0 +1,75 @@
+{
+  "Home": {
+    "title": "Trang Chủ",
+    "searchPlaceholder": "Tìm kiếm sản phẩm..",
+    "btnLogin": "Đăng Nhập",
+    "btnLogout": "Đăng Xuất",
+    "titleAllItem": "Danh sách sản phẩm",
+    "btnAddToCart": "Thêm vào giỏ"
+  },
+  "Cart": {
+    "headerL": "Giỏ Hàng",
+    "headerR": "Thanh Toán",
+    "total": "Tổng Tiền",
+    "btnOrder": "Thanh Toán",
+    "empty": "Giỏ hàng trống hãy",
+    "emptyTagA": "đi đặt nào"
+  },
+  "Order": {
+    "total": "Tổng Tiền",
+    "date": "Ngày đặt",
+    "status": "Trạng thái"
+  },
+  "Login": {
+    "username": "Tài Khoản",
+    "pass": "Mật Khẩu",
+    "phUsername": "Nhâp tài khoản",
+    "phPass": "Nhập mật khẩu",
+    "emptyUsername": "Tài khoản không được trống",
+    "emptyPass": "Mật khẩu không được trống",
+    "noAccount": "Bạn chưa có tài khoản",
+    "register": "Vào đây",
+    "btn": "Đăng Nhập"
+  },
+  "Register": {
+    "login": "Đăng Nhập",
+    "register": "Đăng Ký"
+  },
+  "HomeAdmin": {
+    "product": "Sản Phẩm",
+    "listProduct": "Danh sách",
+    "addProduct": "Thêm sản phẩm",
+    "order": "Đơn Hàng"
+  },
+  "Item": {
+    "phSearch": "Tìm kiếm sản phẩm",
+    "btnEdit": "Sửa",
+    "btnDelete": "Xóa"
+  },
+  "AddItem": {
+    "name": "Tên sản phẩm",
+    "price": "Giá",
+    "btn": "Thêm sản phẩm",
+    "emptyName": "Tên sản phẩm không được trống",
+    "phName": "Nhập tên sản phẩm"
+  },
+  "OrderAdmin": {
+    "filter": "Đang đợi",
+    "person": "Người đặt",
+    "date": "Ngày đặt"
+  },
+  "OrderDetailsAdmin": {
+    "person": "Người đặt",
+    "date": "Ngày đặt",
+    "total": "Tổng Tiền",
+    "status": "Trạng thái",
+    "btn": "Xác nhận"
+  },
+  "updateItem": {
+    "id": "Mã sản phẩm",
+    "name": "Tên sản phẩm",
+    "price": "Giá",
+    "emptyName": "Tên sản phẩm không được trống",
+    "btn": "Cập nhật"
+  }
+}

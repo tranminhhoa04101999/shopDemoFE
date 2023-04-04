@@ -7,7 +7,9 @@
   ></app-confirm-model>
   <form #form="ngForm">
     <div class="form-group">
-      <label for="exampleInputEmail1">Id</label>
+      <label for="exampleInputEmail1">{{
+        'updateItem.' + 'id' | translate
+      }}</label>
       <input
         type="text"
         class="form-control"
@@ -19,7 +21,9 @@
       />
     </div>
     <div class="form-group">
-      <label for="exampleInputEmail1">Tên sản phẩm</label>
+      <label for="exampleInputEmail1">{{
+        'updateItem.' + 'name' | translate
+      }}</label>
       <input
         type="text"
         class="form-control"
@@ -32,10 +36,10 @@
       />
     </div>
     <div [hidden]="name.valid || name.pristine" class="text-danger">
-      tài khoản không được trống
+      {{ 'updateItem.' + 'emptyName' | translate }}
     </div>
     <div class="form-group">
-      <label for="price">Giá</label>
+      <label for="price">{{ 'updateItem.' + 'price' | translate }}</label>
       <input
         type="number"
         class="form-control"
@@ -56,7 +60,7 @@
       data-toggle="modal"
       data-target="#exampleModal"
     >
-      Cập nhật
+      {{ 'updateItem.' + 'btn' | translate }}
     </button>
   </form>
 </div>

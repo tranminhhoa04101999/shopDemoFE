@@ -3,6 +3,7 @@ import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { OrderDetailDto } from 'src/app/model/OrderDetailDto.model';
 import { OrderDto } from 'src/app/model/OrderDto.model';
 import { OrderService } from 'src/app/service/Order.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-orders',
@@ -10,7 +11,10 @@ import { OrderService } from 'src/app/service/Order.service';
   styleUrls: ['./orders.component.css'],
 })
 export class OrdersComponent implements OnInit {
-  constructor(private orderService: OrderService) {}
+  constructor(
+    private orderService: OrderService,
+    public translate: TranslateService
+  ) {}
 
   orders: OrderDto[] = [];
   orderDetail: OrderDetailDto[] = [];

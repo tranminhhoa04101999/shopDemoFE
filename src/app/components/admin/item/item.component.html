@@ -12,7 +12,7 @@
         <input
           type="text"
           class="form-control"
-          placeholder="Tìm kiếm sản phẩm"
+          [placeholder]="'Item.' + 'phSearch' | translate"
           aria-label="searchInput"
           aria-describedby="basic-addon1"
           [(ngModel)]="searchInput"
@@ -36,7 +36,7 @@
         <div class="card-body p-3">
           <h6 class="card-title">{{ item.name }}</h6>
           <p class="card-text" style="font-weight: bold">
-            {{ item.price | currency : "VND" }}
+            {{ item.price | currency : 'VND' }}
           </p>
           <div class="d-flex align-items-center justify-content-center">
             <a
@@ -44,7 +44,7 @@
               [routerLink]="['/homeAdmin/update/', item.id]"
               routerLinkActive="active"
             >
-              Sửa
+              {{ 'Item.' + 'btnEdit' | translate }}
               <i class="bi bi-pencil-square"></i
             ></a>
             <a
@@ -53,7 +53,7 @@
               data-target="#exampleModal"
               (click)="onGanId({ id: item.id })"
             >
-              Xóa <i class="bi bi-trash"></i
+              {{ 'Item.' + 'btnDelete' | translate }} <i class="bi bi-trash"></i
             ></a>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ItemDto } from 'src/app/model/ItemDto.model';
 import { ItemService } from 'src/app/service/ItemService.service';
+import { TranslateService } from '@ngx-translate/core';
 
 declare var $: any;
 
@@ -11,7 +12,10 @@ declare var $: any;
 })
 export class AddItemComponent implements OnInit {
   item: ItemDto = new ItemDto(0, '', 0);
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private itemService: ItemService,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit() {}
 

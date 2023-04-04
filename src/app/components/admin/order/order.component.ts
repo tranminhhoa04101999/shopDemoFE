@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { OrderDto } from 'src/app/model/OrderDto.model';
 import { OrderService } from 'src/app/service/Order.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order',
@@ -23,7 +24,11 @@ export class OrderComponent implements OnInit {
       new Date()
     ),
   ];
-  constructor(private orderService: OrderService, private router: Router) {}
+  constructor(
+    private orderService: OrderService,
+    private router: Router,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.orderService.findAll().subscribe(

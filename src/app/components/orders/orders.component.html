@@ -5,12 +5,15 @@
         <div class="row container-row">
           <div class="col-lg-9 container-col">
             <h6 class="card-title">
-              <span style="font-weight: bold">Ngày đặt:</span>
-              {{ item.orderDate | date : "dd/MM/yyyy" }}
+              <span style="font-weight: bold">
+                {{ 'Order.' + 'date' | translate }}:</span
+              >
+              {{ item.orderDate | date : 'dd/MM/yyyy' }}
             </h6>
             <p class="card-text">
-              <span style="font-weight: bold">Trạng thái: </span
-              >{{ item.status === 0 ? "Pending" : "Done" }}
+              <span style="font-weight: bold">
+                {{ 'Order.' + 'status' | translate }}: </span
+              >{{ item.status === 0 ? 'Pending' : 'Done' }}
             </p>
           </div>
           <div class="col-lg-3 container-col">
@@ -42,16 +45,18 @@
             </div>
 
             <div class="col-4">
-              <span>{{ item2.itemDto.price | currency : "VND" }}</span>
+              <span>{{ item2.itemDto.price | currency : 'VND' }}</span>
             </div>
             <div class="col-2">x{{ item2.quantity }}</div>
           </div>
         </div>
       </div>
       <div *ngIf="totalOrderDetail !== 0">
-        <span style="font-size: 20px; font-weight: bold">Tổng tiền:</span>
+        <span style="font-size: 20px; font-weight: bold">
+          {{ 'Order.' + 'total' | translate }}:</span
+        >
         <span class="ml-2" style="color: var(--primary-color-red)">{{
-          totalOrderDetail | currency : "VND"
+          totalOrderDetail | currency : 'VND'
         }}</span>
       </div>
     </div>
