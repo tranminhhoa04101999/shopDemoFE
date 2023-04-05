@@ -72,14 +72,30 @@
           </button>
 
           <div>
-            <button
-              class="cart mx-3 btn"
-              style="color: var(--primary-color-red)"
-              (click)="onLogout()"
-            >
-              {{ 'Home.' + 'btnLogout' | translate }}
-              <i class="bi bi-power"></i>
-            </button>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <button
+                  class="user mx-3 btn btn-animation"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="bi bi-gear"></i>
+                </button>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" (click)="onChangeLang('vi')">VI</a>
+                  <a class="dropdown-item" (click)="onChangeLang('en')">EN</a>
+                  <div role="separator" class="dropdown-divider"></div>
+                  <button
+                    class="cart mx-3 btn"
+                    style="color: var(--primary-color-red)"
+                    (click)="onLogout()"
+                  >
+                    {{ 'Home.' + 'btnLogout' | translate }}
+                    <i class="bi bi-power"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <ng-template #logout>

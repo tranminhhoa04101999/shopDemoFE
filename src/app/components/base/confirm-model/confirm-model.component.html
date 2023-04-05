@@ -9,8 +9,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-          Bạn có muốn {{ title }} không !!!
+        <h5 class="modal-title" id="exampleModalLabel" translate>
+          {{ title }}
         </h5>
         <button
           type="button"
@@ -27,15 +27,15 @@
           class="btn btn-outline-secondary"
           data-dismiss="modal"
         >
-          Đóng
+          {{ 'Model.' + 'btnClose' | translate }}
         </button>
         <button
           type="button"
-          class="btn btn-outline-primary"
+          class="btn btn-outline-danger"
           data-dismiss="modal"
           (click)="onConfirm()"
         >
-          Xác nhận
+          {{ 'Model.' + 'btnFirm' | translate }}
         </button>
       </div>
     </div>

@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
       })
       .subscribe((data) => {
         this.itemService.alertData.emit({
-          message: 'Đã thêm vào giỏ !!',
+          message: 'Alert.addToCart',
           alert: 'alert-success',
         });
       });

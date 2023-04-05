@@ -1,4 +1,23 @@
 {
+  "Alert": {
+    "addToCart": "Added to cart successfully!",
+    "cart": "Order placed successfully!",
+    "loginFalse": "Login failed.",
+    "register": "Registered successfully!",
+    "registerFalse": "Registration failed.",
+    "addItem": "Successfully added new",
+    "deleteItem": "Product deleted.",
+    "updateItem": "Updated successfully!",
+    "changeStatus": "Order confirmed successfully!"
+  },
+  "Model": {
+    "btnClose": "Close",
+    "btnFirm": "Confirm",
+    "removeItem": "Do you want to remove this product?",
+    "updateItem": "Do you want to update this product?",
+    "firmOrder": "Confirm order",
+    "checkout": "Place this order"
+  },
   "Home": {
     "title": "Home",
     "searchPlaceholder": "Search products...",
@@ -51,7 +70,8 @@
     "price": "Price",
     "btn": "Add Product",
     "emptyName": "Product name cannot be empty",
-    "phName": "Enter name product"
+    "phName": "Enter name product",
+    "errMin": "Price cannot be less than 1000"
   },
   "OrderAdmin": {
     "filter": "Pending",

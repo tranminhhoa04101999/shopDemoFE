@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CustomerDto } from 'src/app/model/CustomerDto.model';
 import { CustomerService } from 'src/app/service/customer.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ItemService } from 'src/app/service/ItemService.service';
 declare var $: any;
 
 @Component({
@@ -22,20 +23,10 @@ export class LoginComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private router: Router,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private itemService: ItemService
   ) {}
-
-  ngOnInit() {}
-
-  show() {
-    $(this.el.nativeElement).show();
-    setTimeout(() => {
-      $(this.el.nativeElement).hide();
-    }, 3000);
-  }
-  hide() {
-    $(this.el.nativeElement).hide();
-  }
+  ngOnInit(): void {}
 
   onLogin() {
     this.customerService.login(this.customer).subscribe(
@@ -62,8 +53,10 @@ export class LoginComponent implements OnInit {
       },
       (err) => {
         let temp = JSON.parse(err.error);
-        this.show();
-
+        this.itemService.alertData.emit({
+          message: 'Alert.loginFalse',
+          alert: 'alert-danger',
+        });
         this.error = {
           statusCode: temp.statusCode,
           message: temp.message,

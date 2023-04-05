@@ -38,7 +38,10 @@ export class HeaderComponent implements OnInit {
     this.customerService.logginLogout();
   }
 
-  onTest() {}
+  onChangeLang(event) {
+    this.translate.setDefaultLang(event);
+    this.translate.use(event);
+  }
 
   onSearch() {
     this.itemService.setSearchInput(this.searchInput);

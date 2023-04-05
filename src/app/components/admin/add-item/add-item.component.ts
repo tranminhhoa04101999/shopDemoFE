@@ -20,16 +20,9 @@ export class AddItemComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    if (this.item.name.trim() === '') {
-      this.itemService.alertData.emit({
-        message: 'Tên không được trống.',
-        alert: 'alert-warning',
-      });
-      return;
-    }
     if (this.item.price < 1000) {
       this.itemService.alertData.emit({
-        message: 'Giá không được nhỏ hơn 1000',
+        message: 'AddItem.errMin',
         alert: 'alert-warning',
       });
       return;
@@ -40,7 +33,7 @@ export class AddItemComponent implements OnInit {
       (data) => {
         this.item = new ItemDto(0, '', 0);
         this.itemService.alertData.emit({
-          message: 'Thêm sản phẩm thành công !!',
+          message: 'Alert.addItem',
           alert: 'alert-success',
         });
       },

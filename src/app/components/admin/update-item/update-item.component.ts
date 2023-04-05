@@ -32,17 +32,16 @@ export class UpdateItemComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.item);
     this.itemService.update(this.item).subscribe(
       (data) => {
-        // this.router.navigate(["/homeAdmin/item"]);
+        this.itemService.alertData.emit({
+          message: 'Alert.updateItem',
+          alert: 'alert-success',
+        });
       },
       (err) => {
         console.log(err.error);
       }
     );
-  }
-  ontest() {
-    console.log('ecec');
   }
 }

@@ -1,4 +1,24 @@
 {
+  "Alert": {
+    "addToCart": "Đã thêm vào giỏ !!",
+    "cart": "Đặt hàng thành công !!",
+    "loginFalse": "Đăng nhập thất bại",
+    "register": "Đăng ký thành công !!",
+    "registerFalse": "Đăng ký thất bại !!",
+    "addItem": "Thêm mới thành công",
+    "deleteItem": "Đã xóa sản phẩm",
+    "updateItem": "Cập nhật thành công !!",
+    "changeStatus": "Xác nhận đơn thành công"
+  },
+  "Model": {
+    "btnClose": "Đóng",
+    "btnFirm": "Xác nhận",
+    "removeItem": "Bạn muốn xóa sản phẩm này",
+    "updateItem": "Bạn muốn cập nhật sản phẩm",
+    "firmOrder": "Xác nhận đơn hàng",
+    "checkout": "Đặt đơn hàng này"
+  },
+
   "Home": {
     "title": "Trang Chủ",
     "searchPlaceholder": "Tìm kiếm sản phẩm..",
@@ -51,7 +71,8 @@
     "price": "Giá",
     "btn": "Thêm sản phẩm",
     "emptyName": "Tên sản phẩm không được trống",
-    "phName": "Nhập tên sản phẩm"
+    "phName": "Nhập tên sản phẩm",
+    "errMin": "Giá không được nhỏ hơn 1000"
   },
   "OrderAdmin": {
     "filter": "Đang đợi",

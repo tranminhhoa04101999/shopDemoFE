@@ -34,9 +34,17 @@ export class ItemComponent implements OnInit {
         //xoa o local
         let index = this.items.findIndex((item) => item.id === this.idDelete);
         this.items.splice(index, 1);
-        //
+        // alert
+        this.itemService.alertData.emit({
+          message: 'Alert.deleteItem',
+          alert: 'alert-success',
+        });
       },
       (err) => {
+        this.itemService.alertData.emit({
+          message: err.error.message,
+          alert: 'alert-warning',
+        });
         console.log(err.error);
       }
     );

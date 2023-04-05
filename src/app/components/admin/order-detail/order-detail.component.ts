@@ -4,6 +4,7 @@ import { OrderDetailDto } from 'src/app/model/OrderDetailDto.model';
 import { OrderDto } from 'src/app/model/OrderDto.model';
 import { OrderService } from 'src/app/service/Order.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ItemService } from 'src/app/service/ItemService.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -18,6 +19,7 @@ export class OrderDetailComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private route: ActivatedRoute,
+    private itemService: ItemService,
     public translate: TranslateService
   ) {}
 
@@ -45,6 +47,10 @@ export class OrderDetailComponent implements OnInit {
     this.orderService.updateOrder(this.order).subscribe(
       (data) => {
         this.order = data;
+        this.itemService.alertData.emit({
+          message: 'Alert.changeStatus',
+          alert: 'alert-success',
+        });
       },
       (err) => {
         console.log(err);

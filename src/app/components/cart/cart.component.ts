@@ -112,7 +112,7 @@ export class CartComponent implements OnInit {
       (data) => {
         this.carts = new CartDto(0, new CustomerDto(0, '', '', 1), []);
         this.itemService.alertData.emit({
-          message: ' Đặt hàng thành công !!',
+          message: 'Alert.cart',
           alert: 'alert-success',
         });
       },

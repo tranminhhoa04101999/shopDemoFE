@@ -85,7 +85,7 @@ const appRoutes: Routes = [
         useFactory: httpTranslateLoader,
         deps: [HttpClient],
       },
-      defaultLanguage: 'en',
+      defaultLanguage: 'vi',
     }),
   ],
   providers: [

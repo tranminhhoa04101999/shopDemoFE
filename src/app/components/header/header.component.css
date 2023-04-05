@@ -25,3 +25,6 @@
     transform: rotate(-15deg);
   }
 }
+.dropdown-menu {
+  left: -140px;
+}

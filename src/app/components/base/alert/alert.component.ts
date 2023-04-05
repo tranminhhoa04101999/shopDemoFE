@@ -6,6 +6,7 @@ import {
   ViewChild,
   EventEmitter,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ItemService } from 'src/app/service/ItemService.service';
 
 declare var $: any;
@@ -18,13 +19,18 @@ declare var $: any;
 export class AlertComponent implements OnInit {
   @ViewChild('alertChild', { static: true }) el: ElementRef;
 
+  alertString: string;
+
   hide() {
     $(this.el.nativeElement).removeClass('alert-success');
     $(this.el.nativeElement).removeClass('alert-warning');
     $(this.el.nativeElement).hide();
   }
 
-  constructor(private itemService: ItemService) {}
+  constructor(
+    private itemService: ItemService,
+    public translate: TranslateService
+  ) {}
 
   ngOnInit() {
     this.itemService.alertData.subscribe((data) => {

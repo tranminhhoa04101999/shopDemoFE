@@ -1,8 +1,9 @@
 <div
   class="container w-50 container-update shadow-lg bg-white rounded p-4 mt-3"
 >
+  <app-alert></app-alert>
   <app-confirm-model
-    [title]="'cập nhật'"
+    [title]="'Model.updateItem'"
     (onClickFirm)="onSubmit()"
   ></app-confirm-model>
   <form #form="ngForm">

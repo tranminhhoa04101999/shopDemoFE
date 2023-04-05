@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ItemService } from 'src/app/service/ItemService.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { ItemService } from 'src/app/service/ItemService.service';
   styleUrls: ['./confirm-model.component.css'],
 })
 export class ConfirmModelComponent implements OnInit {
-  constructor() {}
+  constructor(public translate: TranslateService) {}
 
   @Input() title = '';
   @Output() onClickFirm = new EventEmitter<string>();

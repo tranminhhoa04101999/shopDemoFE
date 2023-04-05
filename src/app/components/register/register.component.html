@@ -4,18 +4,7 @@
   <div
     class="container h-50 shadow-lg bg-white container-register wrapper-register w-25"
   >
-    <div
-      #alertChild
-      class="alert alert-success alert-dismissible fade show position-fixed"
-      role="alert"
-      id="alertShow"
-      style="z-index: 5; right: 0; top: 100px; display: none"
-    >
-      <strong>Thêm tài khoản thành công!</strong>
-      <button (click)="hide()" type="button" class="close" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
+    <app-alert></app-alert>
     <form (ngSubmit)="onRegister()" #registerForm="ngForm">
       <div class="row mt-5">
         <div class="col-12">
