@@ -33,7 +33,8 @@
     "total": "Tổng Tiền",
     "btnOrder": "Thanh Toán",
     "empty": "Giỏ hàng trống hãy",
-    "emptyTagA": "đi đặt nào"
+    "emptyTagA": "đi đặt nào",
+    "minQuantity": "Số lượng không được nhỏ hơn 1 !!"
   },
   "Order": {
     "total": "Tổng Tiền",

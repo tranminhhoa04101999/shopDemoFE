@@ -100,7 +100,7 @@ export class CartComponent implements OnInit {
         const element = this.carts.cartDetailDtos[i];
         if (element.quantity < 1) {
           this.itemService.alertData.emit({
-            message: 'Số lượng không được nhỏ hơn 1 !!',
+            message: 'Cart.minQuantity',
             alert: 'alert-danger',
           });
           return;

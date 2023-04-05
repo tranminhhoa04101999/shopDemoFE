@@ -32,7 +32,8 @@
     "total": "Total",
     "btnOrder": "Order",
     "empty": "Your cart is empty,",
-    "emptyTagA": "go place an order!"
+    "emptyTagA": "go place an order!",
+    "minQuantity": "Quantity should not be less than 1 !!"
   },
   "Order": {
     "total": "Total",

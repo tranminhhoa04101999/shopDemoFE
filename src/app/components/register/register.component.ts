@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
         console.log(err);
 
         this.itemService.alertData.emit({
-          message: `Đăng ký thất bại !! ${err.error.message}`,
+          message: `${err.error.message}`,
           alert: 'alert-danger',
         });
         console.log(err.error);
