@@ -9,6 +9,8 @@ Run `npm i`.
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`
 
 ## Chức năng của từng màn hình
+- Chuyển ngôn ngữ hệ thống VI và EN.
+![image](https://user-images.githubusercontent.com/64950038/229999874-17462cbb-1ca8-4e72-adfa-ccd10b77e8d1.png)
 
 ### Đăng nhập. 
 
